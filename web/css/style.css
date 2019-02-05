@@ -1,0 +1,19 @@
+.logoCabecera {
+    width: 175px;
+    height: 65px;
+}
+
+.botonjove {
+    background: #d21e45;
+
+}
+
+.botonjove:hover {
+    background: #d21e56;
+
+}
+
+.bordeContenedor {
+    /*border-top: 1px solid black;
+    border-bottom: 1px solid black;*/
+}
