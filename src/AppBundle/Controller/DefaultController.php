@@ -26,6 +26,14 @@ class DefaultController extends Controller
         return $this->render('listado/proyectos.html.twig');
     }
 
+    /**
+     * @Route("seleccionProyecto", name="seleccionProyecto")
+     */
+    public function seleccionAction(Request $request)
+    {
+        return $this->render('seleccionProyecto/seleccion.html.twig');
+    }
+
 
 
 

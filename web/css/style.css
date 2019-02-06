@@ -13,3 +13,12 @@
 
 }
 
+/*--- Selección Proyecto ---*/
+
+.seleccion {
+    padding: 60px;
+    background-image: url("../images/manos.jpg");
+    background-size: cover;
+    height: 25rem;
+    background-position-y: -150px;
+}
