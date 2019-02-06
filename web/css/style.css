@@ -22,3 +22,8 @@
     height: 25rem;
     background-position-y: -150px;
 }
+
+.pruebaBoton {
+    padding-right: 4%;
+    text-align: center;
+}
