@@ -24,6 +24,11 @@
 }
 
 .pruebaBoton {
-    padding-right: 4%;
+    padding-right: 2.7%;
     text-align: center;
+    background-color: #d21e45 !important;
+}
+
+.pruebaBoton:hover{
+    background-color: #d21e56;
 }
