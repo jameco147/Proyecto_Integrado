@@ -77,6 +77,12 @@ class Beneficiarias
      */
     private $mayoresMujer;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Projecto", mappedBy="beneficiaria")
+     */
+    
+    private $projecto;
+
 
     /**
      * Get id
@@ -279,5 +285,30 @@ class Beneficiarias
     {
         return $this->mayoresMujer;
     }
-}
 
+    /**
+     * Get the value of projecto
+     */ 
+    public function getProjecto()
+    {
+        return $this->projecto;
+    }
+
+    /**
+     * Set the value of projecto
+     *
+     * @return  self
+     */ 
+    public function setProjecto($projecto)
+    {
+        $this->projecto = $projecto;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return (string)$this->id;
+    }
+
+}

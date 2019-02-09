@@ -70,6 +70,11 @@ class PoblacionVulnerable
      */
     private $otros;
 
+      /**
+     * @ORM\OneToOne(targetEntity="Projecto", mappedBy="poblaVulnerable")
+     */
+    private $projecto;
+
 
     /**
      * Get id
@@ -248,5 +253,28 @@ class PoblacionVulnerable
     {
         return $this->otros;
     }
-}
 
+    /**
+     * Set projecto.
+     *
+     * @param \AppBundle\Entity\Projecto|null $projecto
+     *
+     * @return PoblacionVulnerable
+     */
+    public function setProjecto(\AppBundle\Entity\Projecto $projecto = null)
+    {
+        $this->projecto = $projecto;
+
+        return $this;
+    }
+
+    /**
+     * Get projecto.
+     *
+     * @return \AppBundle\Entity\Projecto|null
+     */
+    public function getProjecto()
+    {
+        return $this->projecto;
+    }
+}
