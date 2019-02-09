@@ -28,6 +28,11 @@ class Estado
      */
     private $nombre;
 
+    /**
+     * @ORM\OneToOne(targetEntity="Projecto", mappedBy="estado")
+     */
+    private $projecto;
+
 
     /**
      * Get id
@@ -62,5 +67,28 @@ class Estado
     {
         return $this->nombre;
     }
-}
 
+    /**
+     * Set projecto.
+     *
+     * @param \AppBundle\Entity\Projecto|null $projecto
+     *
+     * @return Estado
+     */
+    public function setProjecto(\AppBundle\Entity\Projecto $projecto = null)
+    {
+        $this->projecto = $projecto;
+
+        return $this;
+    }
+
+    /**
+     * Get projecto.
+     *
+     * @return \AppBundle\Entity\Projecto|null
+     */
+    public function getProjecto()
+    {
+        return $this->projecto;
+    }
+}

@@ -36,11 +36,10 @@ class Projecto
     private $codigoContable;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="tipo_administ", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="TipoAdministracion", inversedBy="projecto")
+     * @ORM\JoinColumn(name="tipo_admin_id", referencedColumnName="id")
      */
-    private $tipoAdminist;
+    private $tipoAdministracion;
 
     /**
      * @var string
@@ -50,9 +49,8 @@ class Projecto
     private $publicoPrivada;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="tipo_financiacion", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="TipoFinanciacion", inversedBy="projecto")
+     * @ORM\JoinColumn(name="tipo_finan_id", referencedColumnName="id")
      */
     private $tipoFinanciacion;
 
@@ -64,38 +62,33 @@ class Projecto
     private $nombre;
 
     /**
-     * @var bool
-     *
-     * @ORM\Column(name="estado", type="boolean")
+     * @ORM\OneToOne(targetEntity="Estado", inversedBy="projecto")
+     * @ORM\JoinColumn(name="estado_id", referencedColumnName="id")
      */
     private $estado;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="plan_estrategico", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="PlanEstrategico", inversedBy="projecto")
+     * @ORM\JoinColumn(name="plan_estrate_id", referencedColumnName="id")
      */
     private $planEstrategico;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="coordina", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Equipo", inversedBy="equipoCoordina")
+     * @ORM\JoinColumn(name="coordina_id", referencedColumnName="id")
      */
     private $coordina;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="revisa", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Equipo", inversedBy="equipoRevisa")
+     * @ORM\JoinColumn(name="revisa_id", referencedColumnName="id")
      */
     private $revisa;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="apoya", type="string", length=255)
-     */
+      * @ORM\ManyToOne(targetEntity="Equipo", inversedBy="equipoApoya")
+      * @ORM\JoinColumn(name="apoya_id", referencedColumnName="id")
+      */
     private $apoya;
 
     /**
@@ -140,11 +133,11 @@ class Projecto
      */
     private $linkConvacatoria;
 
-     /**
-     * @var float
-     *
-     * @ORM\Column(name="importe_solicitado", type="float")
-     */
+    /**
+    * @var float
+    *
+    * @ORM\Column(name="importe_solicitado", type="float")
+    */
     private $importeSolicitado;
 
     /**
@@ -225,25 +218,22 @@ class Projecto
     private $observaciones;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="beneficiaria", type="string", length=255)
-     */
+    * @ORM\OneToOne(targetEntity="PoblacionVulnerable", inversedBy="projecto")
+    * @ORM\JoinColumn(name="pobla_vulne_id", referencedColumnName="id")
+    */
+     private $poblaVulnerable;
+
+     /**
+    * @ORM\OneToOne(targetEntity="ImpactoSocial", inversedBy="projecto")
+    * @ORM\JoinColumn(name="imp_soc_id", referencedColumnName="id")
+    */
+     private $impactoSocial;
+
+    /**
+    * @ORM\OneToOne(targetEntity="Beneficiarias", inversedBy="projecto")
+    * @ORM\JoinColumn(name="beneficiaria_id", referencedColumnName="id")
+    */
     private $beneficiaria;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="pobla_vulnerable", type="string", length=255)
-     */
-    private $poblaVulnerable;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="impacto_social", type="string", length=255)
-     */
-    private $impactoSocial;
 
 
     /**
@@ -304,29 +294,6 @@ class Projecto
         return $this->codigoContable;
     }
 
-    /**
-     * Set tipoAdminist.
-     *
-     * @param string $tipoAdminist
-     *
-     * @return Projecto
-     */
-    public function setTipoAdminist($tipoAdminist)
-    {
-        $this->tipoAdminist = $tipoAdminist;
-
-        return $this;
-    }
-
-    /**
-     * Get tipoAdminist.
-     *
-     * @return string
-     */
-    public function getTipoAdminist()
-    {
-        return $this->tipoAdminist;
-    }
 
     /**
      * Set publicoPrivada.
@@ -352,29 +319,6 @@ class Projecto
         return $this->publicoPrivada;
     }
 
-    /**
-     * Set tipoFinanciacion.
-     *
-     * @param string $tipoFinanciacion
-     *
-     * @return Projecto
-     */
-    public function setTipoFinanciacion($tipoFinanciacion)
-    {
-        $this->tipoFinanciacion = $tipoFinanciacion;
-
-        return $this;
-    }
-
-    /**
-     * Get tipoFinanciacion.
-     *
-     * @return string
-     */
-    public function getTipoFinanciacion()
-    {
-        return $this->tipoFinanciacion;
-    }
 
     /**
      * Set nombre.
@@ -398,126 +342,6 @@ class Projecto
     public function getNombre()
     {
         return $this->nombre;
-    }
-
-    /**
-     * Set estado.
-     *
-     * @param bool $estado
-     *
-     * @return Projecto
-     */
-    public function setEstado($estado)
-    {
-        $this->estado = $estado;
-
-        return $this;
-    }
-
-    /**
-     * Get estado.
-     *
-     * @return bool
-     */
-    public function getEstado()
-    {
-        return $this->estado;
-    }
-
-    /**
-     * Set planEstrategico.
-     *
-     * @param string $planEstrategico
-     *
-     * @return Projecto
-     */
-    public function setPlanEstrategico($planEstrategico)
-    {
-        $this->planEstrategico = $planEstrategico;
-
-        return $this;
-    }
-
-    /**
-     * Get planEstrategico.
-     *
-     * @return string
-     */
-    public function getPlanEstrategico()
-    {
-        return $this->planEstrategico;
-    }
-
-    /**
-     * Set coordina.
-     *
-     * @param string $coordina
-     *
-     * @return Projecto
-     */
-    public function setCoordina($coordina)
-    {
-        $this->coordina = $coordina;
-
-        return $this;
-    }
-
-    /**
-     * Get coordina.
-     *
-     * @return string
-     */
-    public function getCoordina()
-    {
-        return $this->coordina;
-    }
-
-    /**
-     * Set revisa.
-     *
-     * @param string $revisa
-     *
-     * @return Projecto
-     */
-    public function setRevisa($revisa)
-    {
-        $this->revisa = $revisa;
-
-        return $this;
-    }
-
-    /**
-     * Get revisa.
-     *
-     * @return string
-     */
-    public function getRevisa()
-    {
-        return $this->revisa;
-    }
-
-    /**
-     * Set apoya.
-     *
-     * @param string $apoya
-     *
-     * @return Projecto
-     */
-    public function setApoya($apoya)
-    {
-        $this->apoya = $apoya;
-
-        return $this;
-    }
-
-    /**
-     * Get apoya.
-     *
-     * @return string
-     */
-    public function getApoya()
-    {
-        return $this->apoya;
     }
 
     /**
@@ -928,83 +752,12 @@ class Projecto
         return $this->observaciones;
     }
 
-    /**
-     * Set beneficiaria.
-     *
-     * @param string $beneficiaria
-     *
-     * @return Projecto
-     */
-    public function setBeneficiaria($beneficiaria)
-    {
-        $this->beneficiaria = $beneficiaria;
-
-        return $this;
-    }
-
-    /**
-     * Get beneficiaria.
-     *
-     * @return string
-     */
-    public function getBeneficiaria()
-    {
-        return $this->beneficiaria;
-    }
-
-    /**
-     * Set poblaVulnerable.
-     *
-     * @param string $poblaVulnerable
-     *
-     * @return Projecto
-     */
-    public function setPoblaVulnerable($poblaVulnerable)
-    {
-        $this->poblaVulnerable = $poblaVulnerable;
-
-        return $this;
-    }
-
-    /**
-     * Get poblaVulnerable.
-     *
-     * @return string
-     */
-    public function getPoblaVulnerable()
-    {
-        return $this->poblaVulnerable;
-    }
-
-    /**
-     * Set impactoSocial.
-     *
-     * @param string $impactoSocial
-     *
-     * @return Projecto
-     */
-    public function setImpactoSocial($impactoSocial)
-    {
-        $this->impactoSocial = $impactoSocial;
-
-        return $this;
-    }
-
-    /**
-     * Get impactoSocial.
-     *
-     * @return string
-     */
-    public function getImpactoSocial()
-    {
-        return $this->impactoSocial;
-    }
-
+    
     /**
      * Get the value of importeSolicitado
      *
      * @return  float
-     */ 
+     */
     public function getImporteSolicitado()
     {
         return $this->importeSolicitado;
@@ -1016,11 +769,256 @@ class Projecto
      * @param  float  $importeSolicitado
      *
      * @return  self
-     */ 
+     */
     public function setImporteSolicitado(float $importeSolicitado)
     {
         $this->importeSolicitado = $importeSolicitado;
 
         return $this;
+    }
+
+    /**
+     * Set tipoAdministracion.
+     *
+     * @param \AppBundle\Entity\TipoAdministracion|null $tipoAdministracion
+     *
+     * @return Projecto
+     */
+    public function setTipoAdministracion(\AppBundle\Entity\TipoAdministracion $tipoAdministracion = null)
+    {
+        $this->tipoAdministracion = $tipoAdministracion;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoAdministracion.
+     *
+     * @return \AppBundle\Entity\TipoAdministracion|null
+     */
+    public function getTipoAdministracion()
+    {
+        return $this->tipoAdministracion;
+    }
+
+    /**
+     * Set tipoFinanciacion.
+     *
+     * @param \AppBundle\Entity\TipoFinanciacion|null $tipoFinanciacion
+     *
+     * @return Projecto
+     */
+    public function setTipoFinanciacion(\AppBundle\Entity\TipoFinanciacion $tipoFinanciacion = null)
+    {
+        $this->tipoFinanciacion = $tipoFinanciacion;
+
+        return $this;
+    }
+
+    /**
+     * Get tipoFinanciacion.
+     *
+     * @return \AppBundle\Entity\TipoFinanciacion|null
+     */
+    public function getTipoFinanciacion()
+    {
+        return $this->tipoFinanciacion;
+    }
+
+    /**
+     * Set estado.
+     *
+     * @param \AppBundle\Entity\Estado|null $estado
+     *
+     * @return Projecto
+     */
+    public function setEstado(\AppBundle\Entity\Estado $estado = null)
+    {
+        $this->estado = $estado;
+
+        return $this;
+    }
+
+    /**
+     * Get estado.
+     *
+     * @return \AppBundle\Entity\Estado|null
+     */
+    public function getEstado()
+    {
+        return $this->estado;
+    }
+
+    /**
+     * Set planEstrategico.
+     *
+     * @param \AppBundle\Entity\PlanEstrategico|null $planEstrategico
+     *
+     * @return Projecto
+     */
+    public function setPlanEstrategico(\AppBundle\Entity\PlanEstrategico $planEstrategico = null)
+    {
+        $this->planEstrategico = $planEstrategico;
+
+        return $this;
+    }
+
+    /**
+     * Get planEstrategico.
+     *
+     * @return \AppBundle\Entity\PlanEstrategico|null
+     */
+    public function getPlanEstrategico()
+    {
+        return $this->planEstrategico;
+    }
+
+    /**
+     * Set coordina.
+     *
+     * @param \AppBundle\Entity\Equipo|null $coordina
+     *
+     * @return Projecto
+     */
+    public function setCoordina(\AppBundle\Entity\Equipo $coordina = null)
+    {
+        $this->coordina = $coordina;
+
+        return $this;
+    }
+
+    /**
+     * Get coordina.
+     *
+     * @return \AppBundle\Entity\Equipo|null
+     */
+    public function getCoordina()
+    {
+        return $this->coordina;
+    }
+
+    /**
+     * Set revisa.
+     *
+     * @param \AppBundle\Entity\Equipo|null $revisa
+     *
+     * @return Projecto
+     */
+    public function setRevisa(\AppBundle\Entity\Equipo $revisa = null)
+    {
+        $this->revisa = $revisa;
+
+        return $this;
+    }
+
+    /**
+     * Get revisa.
+     *
+     * @return \AppBundle\Entity\Equipo|null
+     */
+    public function getRevisa()
+    {
+        return $this->revisa;
+    }
+
+    /**
+     * Set apoya.
+     *
+     * @param \AppBundle\Entity\Equipo|null $apoya
+     *
+     * @return Projecto
+     */
+    public function setApoya(\AppBundle\Entity\Equipo $apoya = null)
+    {
+        $this->apoya = $apoya;
+
+        return $this;
+    }
+
+    /**
+     * Get apoya.
+     *
+     * @return \AppBundle\Entity\Equipo|null
+     */
+    public function getApoya()
+    {
+        return $this->apoya;
+    }
+
+    /**
+     * Set poblaVulnerable.
+     *
+     * @param \AppBundle\Entity\PoblacionVulnerable|null $poblaVulnerable
+     *
+     * @return Projecto
+     */
+    public function setPoblaVulnerable(\AppBundle\Entity\PoblacionVulnerable $poblaVulnerable = null)
+    {
+        $this->poblaVulnerable = $poblaVulnerable;
+
+        return $this;
+    }
+
+    /**
+     * Get poblaVulnerable.
+     *
+     * @return \AppBundle\Entity\PoblacionVulnerable|null
+     */
+    public function getPoblaVulnerable()
+    {
+        return $this->poblaVulnerable;
+    }
+
+    /**
+     * Set impactoSocial.
+     *
+     * @param \AppBundle\Entity\ImpactoSocial|null $impactoSocial
+     *
+     * @return Projecto
+     */
+    public function setImpactoSocial(\AppBundle\Entity\ImpactoSocial $impactoSocial = null)
+    {
+        $this->impactoSocial = $impactoSocial;
+
+        return $this;
+    }
+
+    /**
+     * Get impactoSocial.
+     *
+     * @return \AppBundle\Entity\ImpactoSocial|null
+     */
+    public function getImpactoSocial()
+    {
+        return $this->impactoSocial;
+    }
+
+    public function __toString()
+    {
+        return $this->nombre;
+    }
+
+    /**
+     * Set beneficiaria.
+     *
+     * @param \AppBundle\Entity\Beneficiarias|null $beneficiaria
+     *
+     * @return Projecto
+     */
+    public function setBeneficiaria(\AppBundle\Entity\Beneficiarias $beneficiaria = null)
+    {
+        $this->beneficiaria = $beneficiaria;
+
+        return $this;
+    }
+
+    /**
+     * Get beneficiaria.
+     *
+     * @return \AppBundle\Entity\Beneficiarias|null
+     */
+    public function getBeneficiaria()
+    {
+        return $this->beneficiaria;
     }
 }
