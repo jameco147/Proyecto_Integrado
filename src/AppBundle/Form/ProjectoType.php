@@ -21,11 +21,13 @@ class ProjectoType extends AbstractType
         ->add('importeSolicitado')->add('importeConcedido')->add('fechaEstimadaResolucion')
         ->add('fechaResolucion')->add('fechaIniEjecucion')->add('fechaFinEjecucion')
         ->add('duracionMeses')->add('fechaJustificacion1')->add('fechaJustificacion2')
-        ->add('fechaRequi1')->add('fechaRequi2')->add('observaciones')->add('tipoAdministracion')
-        ->add('tipoFinanciacion')->add('estado')->add('planEstrategico')->add('coordina')
-        ->add('revisa')->add('apoya')->add('poblaVulnerable')->add('impactoSocial');
+        ->add('fechaRequi1')->add('fechaRequi2')->add('observaciones');
         
-        $builder->add('beneficiaria');
+        /*->add('tipoAdministracion')*/
+       /* ->add('tipoFinanciacion')->add('estado')->add('planEstrategico')->add('coordina')*/
+       /*->add('revisa')->add('apoya')/->add('poblaVulnerable')->add('impactoSocial');*/
+        
+       // $builder->add('beneficiaria');
 
         $builder->add('salvar',SubmitType::class,array('label'=>"Nuevo Proyecto"));
 
