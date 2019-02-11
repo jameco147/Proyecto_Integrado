@@ -16,6 +16,8 @@ use AppBundle\Entity\Pago;
 use AppBundle\Form\PagoType;
 use AppBundle\Entity\Prog_Pago;
 use AppBundle\Form\Prog_PagoType;
+use AppBundle\Entity\TipoAdministracion;
+use AppBundle\Form\TipoAdministracionType;
 class ProjectoController extends Controller
 {
     /**
@@ -31,7 +33,11 @@ class ProjectoController extends Controller
             return $this->pagoAction($request,$proy);
         } elseif ($estado=='impactoSocial') {
             return $this->impactoSocialAction($request,$proy);
-        } else{
+        } 
+        elseif ($estado=='tipoAdministracion') {
+          return $this->tipoAdminstraAction($request,$proy);
+      } 
+        else{
           return $this->redirectToRoute('homepage');
         }
 
@@ -49,7 +55,7 @@ class ProjectoController extends Controller
           $entityManager->persist($proye);
           $entityManager->flush();
 
-          return $this->redirectToRoute('homepage',array('estado'=>'beneficiarias', 'proy'=>$proye->getId()));
+          return $this->redirectToRoute('homepage',array('estado'=>'tipoAdministracion', 'proy'=>$proye->getId()));
         }
         return $this->render('default/addProj.html.twig',array('form'=>$form->createView()));
     }
@@ -129,4 +135,27 @@ class ProjectoController extends Controller
         }
         return $this->render('default/addPago.html.twig',array('form'=>$form->createView()));
     }
+
+    private function tipoAdminstraAction($request,$proy){
+
+      $tipoAdmi= new TipoAdministracion();
+      $form = $this->createForm(TipoAdministracionType::class,$tipoAdmi);
+      $form->handleRequest($request);
+
+      if ($form->isSubmitted() && $form->isValid()) {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($tipoAdmi);
+
+        $repository = $this->getDoctrine()->getRepository(Projecto::class);
+        $pro = $repository->findById($proy);
+
+        $entityManager->flush();
+        $pro[0]->setTipoAdministracion($tipoAdmi);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('homepage');
+    }
+      return $this->render('default/addTipoAdministracion.html.twig',array('form'=>$form->createView()));
+  }
 }
