@@ -3,7 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Projecto
  *
@@ -234,6 +234,18 @@ class Projecto
     * @ORM\JoinColumn(name="beneficiaria_id", referencedColumnName="id")
     */
     private $beneficiaria;
+
+
+    /**
+     * @ORM\OneToMany(targetEntity="Prog_Pago", mappedBy="idProjecto")
+     */
+    private $prog_pago;
+
+
+    public function __construct()
+    {
+        $this->prog_pago = new ArrayCollection();
+    }
 
 
     /**
@@ -1020,5 +1032,41 @@ class Projecto
     public function getBeneficiaria()
     {
         return $this->beneficiaria;
+    }
+
+    /**
+     * Add progPago.
+     *
+     * @param \AppBundle\Entity\Prog_Pago $progPago
+     *
+     * @return Projecto
+     */
+    public function addProgPago(\AppBundle\Entity\Prog_Pago $progPago)
+    {
+        $this->prog_pago[] = $progPago;
+
+        return $this;
+    }
+
+    /**
+     * Remove progPago.
+     *
+     * @param \AppBundle\Entity\Prog_Pago $progPago
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeProgPago(\AppBundle\Entity\Prog_Pago $progPago)
+    {
+        return $this->prog_pago->removeElement($progPago);
+    }
+
+    /**
+     * Get progPago.
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProgPago()
+    {
+        return $this->prog_pago;
     }
 }
