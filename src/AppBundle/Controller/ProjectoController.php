@@ -42,7 +42,7 @@ class ProjectoController extends Controller
 
           return $this->redirectToRoute('homepage',array('estado'=>'beneficiarias', 'proy'=>$proye->getId()));
         }
-        return $this->render('default/añadirProj.html.twig',array('form'=>$form->createView()));
+        return $this->render('default/addProj.html.twig',array('form'=>$form->createView()));
     }
     private function beneficiariasAction($request,$proy){
 
@@ -64,6 +64,6 @@ class ProjectoController extends Controller
 
         return $this->redirectToRoute('homepage');
       }
-      return $this->render('default/añadirBeneficiarias.html.twig',array('form'=>$form->createView()));
+      return $this->render('default/addBeneficiarias.html.twig',array('form'=>$form->createView()));
     }
 }
