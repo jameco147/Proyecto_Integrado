@@ -15,7 +15,7 @@ use AppBundle\Form\BeneficiariasType;
 use AppBundle\Entity\Pago;
 use AppBundle\Form\PagoType;
 use AppBundle\Entity\Prog_Pago;
-use AppBundle\Form\Prgo_PagoType;
+use AppBundle\Form\Prog_PagoType;
 class ProjectoController extends Controller
 {
     /**
@@ -125,8 +125,8 @@ class ProjectoController extends Controller
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('homepage',array('estado'=>'impactoSocial', 'proy'=>$proy));
         }
-        $this->render('default/addImpactoSocial.html.twig',array('form'=>$form->createView()));
+        return $this->render('default/addPago.html.twig',array('form'=>$form->createView()));
     }
 }
