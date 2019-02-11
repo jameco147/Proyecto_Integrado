@@ -1,3 +1,21 @@
-  {{form_start(form)}}
-      {{form_widget(form)}}
-      {{form_end(form)}}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% extends 'base.html.twig' %}
+
+
+{% block title %}
+      Pagos
+{% endblock %}
+
+
+{% block body %}
+      <div class="container">
+            <h1>Pagos</h1>
+            <div class="row d-flex justify-content-center">
+                  <div class="col-6">
+                        {{form_start(form)}}
+                        {{form_widget(form)}}
+                        {{form_end(form)}}
+                  </div>
+            </div>
+      </div>
+{% endblock %}

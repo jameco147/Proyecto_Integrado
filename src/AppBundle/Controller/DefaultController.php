@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Projecto;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -23,7 +24,10 @@ class DefaultController extends Controller
      */
     public function proyectosAction(Request $request)
     {
-        return $this->render('listado/proyectos.html.twig');
+        $proyectoRepository = $this->getDoctrine()->getRepository(Projecto::class);
+        $proyectos = $proyectoRepository->findAll();
+        //var_dump($proyectos);
+        return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos));
     }
 
     /**
