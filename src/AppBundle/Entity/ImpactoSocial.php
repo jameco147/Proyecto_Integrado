@@ -370,4 +370,9 @@ class ImpactoSocial
     {
         return $this->projecto;
     }
+
+    public function __toString()
+    {
+        return (string)$this->id;
+    }
 }
