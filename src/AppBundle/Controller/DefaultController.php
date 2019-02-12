@@ -26,8 +26,8 @@ class DefaultController extends Controller
     {
         $proyectoRepository = $this->getDoctrine()->getRepository(Projecto::class);
         $proyectos = $proyectoRepository->findAll();
-        //var_dump($proyectos);
-        return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos));
+        dump($proyectos);
+       return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos));
     }
 
     /**

@@ -70,7 +70,7 @@ class ProjectoController extends Controller
             $entityManager->persist($proye);
             $entityManager->flush();
 
-            return $this->redirectToRoute('homepage', array('estado'=>'poblacionVulnerable', 'proy'=>$proye->getId()));
+            return $this->redirectToRoute('homepage', array('estado'=>'beneficiarias', 'proy'=>$proye->getId()));
         }
         return $this->render('default/addProj.html.twig', array('form'=>$form->createView()));
     }
@@ -237,7 +237,7 @@ class ProjectoController extends Controller
             $pro[0]->setEstado($estado);
             $entityManager->flush();
 
-            return $this->redirectToRoute('homepage', array('poblacionVulnerable'=>'tipoAdministracion', 'proy'=>$proy));
+            return $this->redirectToRoute('homepage', array('estado'=>'poblacionVulnerable', 'proy'=>$proy));
 
         }
         return $this->render('default/addEstado.html.twig', array('form'=>$form->createView()));

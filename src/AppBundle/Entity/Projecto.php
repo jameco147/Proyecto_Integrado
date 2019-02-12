@@ -36,7 +36,7 @@ class Projecto
     private $codigoContable;
 
     /**
-     * @ORM\ManyToOne(targetEntity="TipoAdministracion", inversedBy="projecto")
+     * @ORM\ManyToOne(targetEntity="TipoAdministracion", inversedBy="projecto", fetch="EAGER")
      * @ORM\JoinColumn(name="tipo_admin_id", referencedColumnName="id")
      */
     private $tipoAdministracion;
@@ -49,7 +49,7 @@ class Projecto
     private $publicoPrivada;
 
     /**
-     * @ORM\ManyToOne(targetEntity="TipoFinanciacion", inversedBy="projecto")
+     * @ORM\ManyToOne(targetEntity="TipoFinanciacion", inversedBy="projecto", fetch="EAGER")
      * @ORM\JoinColumn(name="tipo_finan_id", referencedColumnName="id")
      */
     private $tipoFinanciacion;
@@ -62,31 +62,31 @@ class Projecto
     private $nombre;
 
     /**
-     * @ORM\OneToOne(targetEntity="Estado", inversedBy="projecto")
+     * @ORM\OneToOne(targetEntity="Estado", inversedBy="projecto", fetch="EAGER")
      * @ORM\JoinColumn(name="estado_id", referencedColumnName="id")
      */
     private $estado;
 
     /**
-     * @ORM\ManyToOne(targetEntity="PlanEstrategico", inversedBy="projecto")
+     * @ORM\ManyToOne(targetEntity="PlanEstrategico", inversedBy="projecto", fetch="EAGER")
      * @ORM\JoinColumn(name="plan_estrate_id", referencedColumnName="id")
      */
     private $planEstrategico;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Equipo", inversedBy="equipoCoordina")
+     * @ORM\ManyToOne(targetEntity="Equipo", inversedBy="equipoCoordina", fetch="EAGER")
      * @ORM\JoinColumn(name="coordina_id", referencedColumnName="id")
      */
     private $coordina;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Equipo", inversedBy="equipoRevisa")
+     * @ORM\ManyToOne(targetEntity="Equipo", inversedBy="equipoRevisa", fetch="EAGER")
      * @ORM\JoinColumn(name="revisa_id", referencedColumnName="id")
      */
     private $revisa;
 
     /**
-      * @ORM\ManyToOne(targetEntity="Equipo", inversedBy="equipoApoya")
+      * @ORM\ManyToOne(targetEntity="Equipo", inversedBy="equipoApoya", fetch="EAGER")
       * @ORM\JoinColumn(name="apoya_id", referencedColumnName="id")
       */
     private $apoya;
@@ -218,26 +218,26 @@ class Projecto
     private $observaciones;
 
     /**
-    * @ORM\OneToOne(targetEntity="PoblacionVulnerable", inversedBy="projecto")
+    * @ORM\OneToOne(targetEntity="PoblacionVulnerable", inversedBy="projecto", fetch="EAGER")
     * @ORM\JoinColumn(name="pobla_vulne_id", referencedColumnName="id")
     */
      private $poblaVulnerable;
 
      /**
-    * @ORM\OneToOne(targetEntity="ImpactoSocial", inversedBy="projecto")
+    * @ORM\OneToOne(targetEntity="ImpactoSocial", inversedBy="projecto", fetch="EAGER")
     * @ORM\JoinColumn(name="imp_soc_id", referencedColumnName="id")
     */
      private $impactoSocial;
 
     /**
-    * @ORM\OneToOne(targetEntity="Beneficiarias", inversedBy="projecto")
+    * @ORM\OneToOne(targetEntity="Beneficiarias", inversedBy="projecto", fetch="EAGER")
     * @ORM\JoinColumn(name="beneficiaria_id", referencedColumnName="id")
     */
     private $beneficiaria;
 
 
     /**
-     * @ORM\OneToMany(targetEntity="Prog_Pago", mappedBy="idProjecto")
+     * @ORM\OneToMany(targetEntity="Prog_Pago", mappedBy="idProjecto", fetch="EAGER")
      */
     private $prog_pago;
 
