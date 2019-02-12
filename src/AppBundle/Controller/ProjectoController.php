@@ -96,27 +96,6 @@ class ProjectoController extends Controller
         return $this->render('default/addBeneficiarias.html.twig', array('form'=>$form->createView()));
     }
 
-    private function impactoSocialAction($request, $proy)
-    {
-        $impacto = new ImpactoSocial();
-        $form = $this->createForm(ImpactoSocialType::class, $impacto);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($impacto);
-
-            $repository = $this->getDoctrine()->getRepository(Projecto::class);
-            $pro = $repository->findById($proy);
-
-            $entityManager->flush();
-            $pro[0]->setImpactoSocial($impacto);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('homepage');
-        }
-        return $this->render('default/addImpactoSocial.html.twig', array('form'=>$form->createView()));
-    }
 
     private function pagoAction($request, $proy)
     {
@@ -148,6 +127,31 @@ class ProjectoController extends Controller
         return $this->render('default/addPago.html.twig', array('form'=>$form->createView()));
     }
 
+
+    private function impactoSocialAction($request, $proy)
+    {
+        $impacto = new ImpactoSocial();
+        $form = $this->createForm(ImpactoSocialType::class, $impacto);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($impacto);
+
+            $repository = $this->getDoctrine()->getRepository(Projecto::class);
+            $pro = $repository->findById($proy);
+
+            $entityManager->flush();
+            $pro[0]->setImpactoSocial($impacto);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('homepage', array('estado'=>'tipoAdministracion', 'proy'=>$proy));
+
+        }
+        return $this->render('default/addImpactoSocial.html.twig', array('form'=>$form->createView()));
+    }
+
+   
     private function tipoAdminstraAction($request, $proy)
     {
         $tipoAdmi= new TipoAdministracion();
@@ -165,7 +169,7 @@ class ProjectoController extends Controller
             $pro[0]->setTipoAdministracion($tipoAdmi);
             $entityManager->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('homepage', array('estado'=>'tipoFinanciacion', 'proy'=>$proy));
         }
         return $this->render('default/addTipoAdministracion.html.twig', array('form'=>$form->createView()));
     }
@@ -187,7 +191,8 @@ class ProjectoController extends Controller
             $pro[0]->setTipoFinanciacion($tipoFinan);
             $entityManager->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('homepage', array('estado'=>'planEstrategico', 'proy'=>$proy));
+
         }
         return $this->render('default/addTipoFinanciacion.html.twig', array('form'=>$form->createView()));
     }
@@ -209,7 +214,8 @@ class ProjectoController extends Controller
             $pro[0]->setPlanEstrategico($planEstr);
             $entityManager->flush();
   
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('homepage', array('estado'=>'estado', 'proy'=>$proy));
+
         }
         return $this->render('default/addPlanEstrategico.html.twig', array('form'=>$form->createView()));
     }
@@ -231,7 +237,8 @@ class ProjectoController extends Controller
             $pro[0]->setEstado($estado);
             $entityManager->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('homepage', array('poblacionVulnerable'=>'tipoAdministracion', 'proy'=>$proy));
+
         }
         return $this->render('default/addEstado.html.twig', array('form'=>$form->createView()));
     }
