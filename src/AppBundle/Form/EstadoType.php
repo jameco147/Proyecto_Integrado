@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class EstadoType extends AbstractType
 {
@@ -14,7 +15,17 @@ class EstadoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')->add('salvar',SubmitType::class,array('label'=>"Guardar"));
+        $builder->add('nombre',ChoiceType::class, [
+            'choices' => [
+                'CONCEDIDA' => 'CONCEDIDA',
+                'DESCARTADA' => 'DESCARTADA',
+                'DENEGADA' => 'DENEGADA',
+                'PRESENTADA' => 'PRESENTADA',
+                'EN PROCESO' => 'EN PROCESO',
+                'JUSTIFICANDO' => 'JUSTIFICANDO',
+            ],
+        ])
+            ->add('salvar',SubmitType::class,array('label'=>"Guardar"));
     }/**
      * {@inheritdoc}
      */

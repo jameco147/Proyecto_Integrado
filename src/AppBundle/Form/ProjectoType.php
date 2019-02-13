@@ -23,7 +23,13 @@ class ProjectoType extends AbstractType
                     'PRIVADA' => 'PRIVADA',
                 ],
             ])
-        ->add('nombre')->add('proyectoEnRed')->add('entidadLider')->add('entidadesSociales')
+        ->add('nombre')->add('proyectoEnRed',ChoiceType::class, [
+                'choices' => [
+                    'SI' => true,
+                    'NO' => false,
+                ],
+            ])
+            ->add('entidadLider')->add('entidadesSociales')
         ->add('financiador')->add('contactoAdminist')->add('linkConvacatoria')
         ->add('importeSolicitado')->add('importeConcedido')->add('fechaEstimadaResolucion')
         ->add('fechaResolucion')->add('fechaIniEjecucion')->add('fechaFinEjecucion')
