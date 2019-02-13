@@ -2,7 +2,9 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Equipo;
 use AppBundle\Entity\ImpactoSocial;
+use AppBundle\Form\EquipoType;
 use AppBundle\Form\ImpactoSocialType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -26,6 +28,7 @@ use AppBundle\Entity\Estado;
 use AppBundle\Form\EstadoType;
 use AppBundle\Entity\PoblacionVulnerable;
 use AppBundle\Form\PoblacionVulnerableType;
+use AppBundle\Form\EquipoType;
 
 
 /**
@@ -272,4 +275,31 @@ class ProjectoController extends Controller
         }
         return $this->render('default/addPoblacionVulnerable.html.twig', array('form'=>$form->createView()));
     }
+
+    /*
+    PREGUNTAR A PACO
+    private function equipoAction($request, $proy)
+    {
+        $equipo= new Equipo();
+        $form = $this->createForm(EquipoType::class, $equipo);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($equipo);
+
+            $repository = $this->getDoctrine()->getRepository(Projecto::class);
+            $pro = $repository->findById($proy);
+
+            $entityManager->flush();
+            $pro[0]->setCoordina($equipo);
+            $pro[0]->setRevisa($equipo);
+            $pro[0]->setApoya($equipo);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('homepage');
+        }
+        return $this->render('default/addEquipo.html.twig', array('form'=>$form->createView()));
+    }
+    */
 }
