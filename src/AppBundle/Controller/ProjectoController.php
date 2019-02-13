@@ -27,6 +27,13 @@ use AppBundle\Form\EstadoType;
 use AppBundle\Entity\PoblacionVulnerable;
 use AppBundle\Form\PoblacionVulnerableType;
 
+
+/**
+ * @Route("/nuevoProyecto")
+ */
+
+
+
 class ProjectoController extends Controller
 {
     /**
