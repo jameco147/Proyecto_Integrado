@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
+
     <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-12">
@@ -68,6 +69,8 @@
                                             {{ proyecto.codigointer }}</td>
                                         <td>
                                             {{ proyecto.codigocontable }}</td>
+                                            <td>
+                                            {{ proyecto.tipoAdministracion.nombre }}</td>
                                     </tr>
                                 {% endfor %}
                             </tbody>
