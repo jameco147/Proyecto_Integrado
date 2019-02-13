@@ -271,6 +271,13 @@ class Projecto
      */
     private $resumen;
 
+     /**
+     * @var string
+     *
+     * @ORM\Column(name="actEmblematicas", type="string", length=255)
+     */
+    private $actEmblematicas;
+
 
     /**
      * @var \DateTime
@@ -1224,6 +1231,30 @@ class Projecto
     public function setResumen(string $resumen)
     {
         $this->resumen = $resumen;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of actEmblematicas
+     *
+     * @return  string
+     */ 
+    public function getActEmblematicas()
+    {
+        return $this->actEmblematicas;
+    }
+
+    /**
+     * Set the value of actEmblematicas
+     *
+     * @param  string  $actEmblematicas
+     *
+     * @return  self
+     */ 
+    public function setActEmblematicas(string $actEmblematicas)
+    {
+        $this->actEmblematicas = $actEmblematicas;
 
         return $this;
     }

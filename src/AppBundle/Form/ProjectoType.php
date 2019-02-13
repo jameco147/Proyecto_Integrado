@@ -32,6 +32,8 @@ class ProjectoType extends AbstractType
         ->add('fechaRequi1')->add('fechaRequi2')->add('fechaLimiteEntrega')->add('periodoEjecucion')
         ->add('observaciones')->add('resumen', TextareaType::class, [
             'attr' => ['class' => 'tinymce'],
+        ])->add('actEmblematicas', TextareaType::class, [
+            'attr' => ['class' => 'tinymce'],
         ]);
         
         /*->add('tipoAdministracion')*/
