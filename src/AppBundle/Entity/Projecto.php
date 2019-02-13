@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+
 /**
  * Projecto
  *
@@ -210,7 +211,7 @@ class Projecto
      */
     private $fechaRequi2;
 
-        /**
+    /**
      * @var string
      *
      * @ORM\Column(name="periodoEjecucion", type="string", length=255)
@@ -229,13 +230,13 @@ class Projecto
     * @ORM\OneToOne(targetEntity="PoblacionVulnerable", inversedBy="projecto", fetch="EAGER")
     * @ORM\JoinColumn(name="pobla_vulne_id", referencedColumnName="id")
     */
-     private $poblaVulnerable;
+    private $poblaVulnerable;
 
-     /**
+    /**
     * @ORM\OneToOne(targetEntity="ImpactoSocial", inversedBy="projecto", fetch="EAGER")
     * @ORM\JoinColumn(name="imp_soc_id", referencedColumnName="id")
     */
-     private $impactoSocial;
+    private $impactoSocial;
 
     /**
     * @ORM\OneToOne(targetEntity="Beneficiarias", inversedBy="projecto", fetch="EAGER")
@@ -249,22 +250,29 @@ class Projecto
      */
     private $prog_pago;
 
-        /**
+    /**
      * @var string
      *
      * @ORM\Column(name="codigoAdministracion", type="string", length=255)
      */
     private $codigoAdministracion;
 
-        /**
+    /**
      * @var string
      *
      * @ORM\Column(name="tecnicoConvocatoria", type="string", length=255)
      */
     private $tecnicoConvocatoria;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="resumen", type="string", length=255)
+     */
+    private $resumen;
 
-       /**
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="fechaLimiteEntrega", type="date")
@@ -1104,7 +1112,7 @@ class Projecto
      * Get the value of codigoAdministracion
      *
      * @return  string
-     */ 
+     */
     public function getCodigoAdministracion()
     {
         return $this->codigoAdministracion;
@@ -1116,7 +1124,7 @@ class Projecto
      * @param  string  $codigoAdministracion
      *
      * @return  self
-     */ 
+     */
     public function setCodigoAdministracion(string $codigoAdministracion)
     {
         $this->codigoAdministracion = $codigoAdministracion;
@@ -1128,7 +1136,7 @@ class Projecto
      * Get the value of tecnicoConvocatoria
      *
      * @return  string
-     */ 
+     */
     public function getTecnicoConvocatoria()
     {
         return $this->tecnicoConvocatoria;
@@ -1140,7 +1148,7 @@ class Projecto
      * @param  string  $tecnicoConvocatoria
      *
      * @return  self
-     */ 
+     */
     public function setTecnicoConvocatoria(string $tecnicoConvocatoria)
     {
         $this->tecnicoConvocatoria = $tecnicoConvocatoria;
@@ -1194,5 +1202,29 @@ class Projecto
     public function getFechaLimiteEntrega()
     {
         return $this->fechaLimiteEntrega;
+    }
+
+    /**
+     * Get the value of resumen
+     *
+     * @return  string
+     */ 
+    public function getResumen()
+    {
+        return $this->resumen;
+    }
+
+    /**
+     * Set the value of resumen
+     *
+     * @param  string  $resumen
+     *
+     * @return  self
+     */ 
+    public function setResumen(string $resumen)
+    {
+        $this->resumen = $resumen;
+
+        return $this;
     }
 }
