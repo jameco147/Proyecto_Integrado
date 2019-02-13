@@ -210,6 +210,14 @@ class Projecto
      */
     private $fechaRequi2;
 
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="periodoEjecucion", type="string", length=255)
+     */
+    private $periodoEjecucion;
+
+
     /**
      * @var string
      *
@@ -240,6 +248,28 @@ class Projecto
      * @ORM\OneToMany(targetEntity="Prog_Pago", mappedBy="idProjecto", fetch="EAGER")
      */
     private $prog_pago;
+
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="codigoAdministracion", type="string", length=255)
+     */
+    private $codigoAdministracion;
+
+        /**
+     * @var string
+     *
+     * @ORM\Column(name="tecnicoConvocatoria", type="string", length=255)
+     */
+    private $tecnicoConvocatoria;
+
+
+       /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="fechaLimiteEntrega", type="date")
+     */
+    private $fechaLimiteEntrega;
 
 
     public function __construct()
@@ -1068,5 +1098,101 @@ class Projecto
     public function getProgPago()
     {
         return $this->prog_pago;
+    }
+
+    /**
+     * Get the value of codigoAdministracion
+     *
+     * @return  string
+     */ 
+    public function getCodigoAdministracion()
+    {
+        return $this->codigoAdministracion;
+    }
+
+    /**
+     * Set the value of codigoAdministracion
+     *
+     * @param  string  $codigoAdministracion
+     *
+     * @return  self
+     */ 
+    public function setCodigoAdministracion(string $codigoAdministracion)
+    {
+        $this->codigoAdministracion = $codigoAdministracion;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of tecnicoConvocatoria
+     *
+     * @return  string
+     */ 
+    public function getTecnicoConvocatoria()
+    {
+        return $this->tecnicoConvocatoria;
+    }
+
+    /**
+     * Set the value of tecnicoConvocatoria
+     *
+     * @param  string  $tecnicoConvocatoria
+     *
+     * @return  self
+     */ 
+    public function setTecnicoConvocatoria(string $tecnicoConvocatoria)
+    {
+        $this->tecnicoConvocatoria = $tecnicoConvocatoria;
+
+        return $this;
+    }
+
+    /**
+     * Set periodoEjecucion.
+     *
+     * @param string $periodoEjecucion
+     *
+     * @return Projecto
+     */
+    public function setPeriodoEjecucion($periodoEjecucion)
+    {
+        $this->periodoEjecucion = $periodoEjecucion;
+
+        return $this;
+    }
+
+    /**
+     * Get periodoEjecucion.
+     *
+     * @return string
+     */
+    public function getPeriodoEjecucion()
+    {
+        return $this->periodoEjecucion;
+    }
+
+    /**
+     * Set fechaLimiteEntrega.
+     *
+     * @param \DateTime $fechaLimiteEntrega
+     *
+     * @return Projecto
+     */
+    public function setFechaLimiteEntrega($fechaLimiteEntrega)
+    {
+        $this->fechaLimiteEntrega = $fechaLimiteEntrega;
+
+        return $this;
+    }
+
+    /**
+     * Get fechaLimiteEntrega.
+     *
+     * @return \DateTime
+     */
+    public function getFechaLimiteEntrega()
+    {
+        return $this->fechaLimiteEntrega;
     }
 }

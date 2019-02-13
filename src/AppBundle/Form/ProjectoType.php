@@ -15,13 +15,15 @@ class ProjectoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('codigoInter')->add('codigoContable')->add('publicoPrivada')
+        $builder->add('codigoInter')->add('codigoAdministracion')->add('tecnicoConvocatoria')
+        ->add('codigoContable')->add('publicoPrivada')
         ->add('nombre')->add('proyectoEnRed')->add('entidadLider')->add('entidadesSociales')
         ->add('financiador')->add('contactoAdminist')->add('linkConvacatoria')
         ->add('importeSolicitado')->add('importeConcedido')->add('fechaEstimadaResolucion')
         ->add('fechaResolucion')->add('fechaIniEjecucion')->add('fechaFinEjecucion')
         ->add('duracionMeses')->add('fechaJustificacion1')->add('fechaJustificacion2')
-        ->add('fechaRequi1')->add('fechaRequi2')->add('observaciones');
+        ->add('fechaRequi1')->add('fechaRequi2')->add('fechaLimiteEntrega')->add('periodoEjecucion')
+        ->add('observaciones');
         
         /*->add('tipoAdministracion')*/
        /* ->add('tipoFinanciacion')->add('estado')->add('planEstrategico')->add('coordina')*/
