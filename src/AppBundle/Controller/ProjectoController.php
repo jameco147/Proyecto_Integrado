@@ -28,7 +28,7 @@ use AppBundle\Entity\Estado;
 use AppBundle\Form\EstadoType;
 use AppBundle\Entity\PoblacionVulnerable;
 use AppBundle\Form\PoblacionVulnerableType;
-use AppBundle\Form\EquipoType;
+
 
 
 /**
