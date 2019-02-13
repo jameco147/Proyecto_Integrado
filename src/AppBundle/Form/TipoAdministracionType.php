@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class TipoAdministracionType extends AbstractType
 {
@@ -14,7 +15,19 @@ class TipoAdministracionType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre');
+        $builder->add('nombre', ChoiceType::class, [
+            'choices' => [
+                'UE' => 'UE',
+                'ESTATAL' => 'ESTATAL',
+                'AUTONOMICA' => 'AUTONÓMICA',
+                'PROVINCIAL' => 'PROVINCIAL',
+                'LOCAL' => 'LOCAL',
+            ],
+            'choice_attr' => function($choiceValue, $key, $value) {
+                // adds a class like attending_yes, attending_no, etc
+                return ['class' => 'nombre_'.strtolower($key)];
+            },
+        ]);
         $builder
         ->add('salvar',SubmitType::class,array('label'=>"Guardar"));
     }/**

@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ProjectoType extends AbstractType
 {
@@ -15,7 +16,12 @@ class ProjectoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('codigoInter')->add('codigoContable')->add('publicoPrivada')
+        $builder->add('codigoInter')->add('codigoContable')->add('publicoPrivada', ChoiceType::class, [
+            'choices' => [
+                'PÚBLICO' => 'PÚBLICO',
+                'PRIVADA' => 'PRIVADA',
+            ],
+        ])
         ->add('nombre')->add('proyectoEnRed')->add('entidadLider')->add('entidadesSociales')
         ->add('financiador')->add('contactoAdminist')->add('linkConvacatoria')
         ->add('importeSolicitado')->add('importeConcedido')->add('fechaEstimadaResolucion')
