@@ -277,17 +277,10 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Importe Condedido</th>
-                                       <th scope="col">Pendiente Cobro</th>
-
-                                {% for proyecto  in proyectos %}
-                                    {% for _proyecto  in proyecto.progPago %}
-                                        {% if _proyecto.idPago.fechaEstimada != null %}
+                                        <th scope="col">Pendiente Cobro</th>
                                         <th scope="col">Fecha Estimada</th>
                                         <th scope="col">Cantidad</th>
                                         <th scope="col">Fecha Pago</th>
-                                        {% endif %}
-                                {% endfor %}
-                             {% endfor %}
                                 </tr>
                             </thead>
                             <tbody>
@@ -307,16 +300,20 @@
 
                                         {% if _proyecto.idPago.fechaEstimada != null %}
                                             <td>{{_proyecto.idPago.fechaEstimada|date('Y-m-d')}}</td>
+                                            {% else %}
+                                            <td>0000-00-00</td>
                                             {% endif %}
 
                                         {% if _proyecto.idPago.cantidad != null %}
                                             <td>{{_proyecto.idPago.cantidad}}</td>
-
+                                        {% else %}
+                                            <td>0</td>
                                         {% endif %}
 
                                         {% if _proyecto.idPago.fechaPago != null %}
                                             <td>{{_proyecto.idPago.fechaPago|date('Y-m-d')}}</td>
-
+                                        {% else %}
+                                            <td>0000-00-00</td>
                                         {% endif %}
 
                             {% endfor %}
