@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ProjectoType extends AbstractType
 {
@@ -35,7 +36,11 @@ class ProjectoType extends AbstractType
         ->add('fechaResolucion')->add('fechaIniEjecucion')->add('fechaFinEjecucion')
         ->add('duracionMeses')->add('fechaJustificacion1')->add('fechaJustificacion2')
         ->add('fechaRequi1')->add('fechaRequi2')->add('fechaLimiteEntrega')->add('periodoEjecucion')
-        ->add('observaciones');
+        ->add('observaciones')->add('resumen', TextareaType::class, [
+            'attr' => ['class' => 'tinymce'],
+        ])->add('actEmblematicas', TextareaType::class, [
+            'attr' => ['class' => 'tinymce'],
+        ]);
         
         /*->add('tipoAdministracion')*/
        /* ->add('tipoFinanciacion')->add('estado')->add('planEstrategico')->add('coordina')*/

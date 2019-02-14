@@ -24,13 +24,13 @@ class Prog_Pago
 
 
     /**
-     * @ORM\ManyToOne(targetEntity="Projecto", inversedBy="prog_pago")
+     * @ORM\ManyToOne(targetEntity="Projecto", inversedBy="prog_pago", fetch="EAGER")
      * @ORM\JoinColumn(name="projecto_id", referencedColumnName="id")
      */
     private $idProjecto;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Pago", inversedBy="prog_pago")
+     * @ORM\ManyToOne(targetEntity="Pago", inversedBy="prog_pago", fetch="EAGER")
      * @ORM\JoinColumn(name="pago_id", referencedColumnName="id")
      */
     private $idPago;
