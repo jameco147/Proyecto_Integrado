@@ -24,6 +24,13 @@ class Projecto
     /**
      * @var string
      *
+     * @ORM\Column(name="tipo_proyecto", type="string", length=255)
+     */
+    private $tipoProyecto;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="codigo_inter", type="string", length=255)
      */
     private $codigoInter;
@@ -310,6 +317,30 @@ class Projecto
     public function getCodigoInter()
     {
         return $this->codigoInter;
+    }
+
+    /**
+     * Get tipoProyecto.
+     *
+     * @return string
+     */
+    public function getTipoProyecto()
+    {
+        return $this->tipoProyecto;
+    }
+
+    /**
+     * Set tipoProyecto.
+     *
+     * @param string $tipoProyecto
+     *
+     * @return Projecto
+     */
+    public function setTipoProyecto($tipoProyecto)
+    {
+        $this->tipoProyecto = $tipoProyecto;
+
+        return $this;
     }
 
     /**

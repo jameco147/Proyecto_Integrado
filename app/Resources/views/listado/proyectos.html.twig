@@ -3,248 +3,255 @@
     <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-12">
-                <h1 class="lead offset-1 mb-5">E-INCLUSIÓN</h1>
+
+                <h1 class="lead offset-1 mb-5">{{ proyectos[0].tipoProyecto }}</h1>
+
                 <!--Este campo será una variable-->
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a aria-controls="home" aria-selected="true" class="nav-link active" data-toggle="tab" href="#home" id="home-tab" role="tab">Equipo</a>
+                        <a aria-controls="home" aria-selected="true" class="nav-link active" data-toggle="tab"
+                           href="#home" id="home-tab" role="tab">Equipo</a>
                     </li>
                     <li class="nav-item">
-                        <a aria-controls="profile" aria-selected="false" class="nav-link" data-toggle="tab" href="#profile" id="profile-tab" role="tab">Identificación</a>
+                        <a aria-controls="profile" aria-selected="false" class="nav-link" data-toggle="tab"
+                           href="#profile" id="profile-tab" role="tab">Identificación</a>
                     </li>
                     <li class="nav-item">
-                        <a aria-controls="contact_1" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact_1" id="contact-tab" role="tab">Seguimiento Convocatorias</a>
+                        <a aria-controls="contact_1" aria-selected="false" class="nav-link" data-toggle="tab"
+                           href="#contact_1" id="contact-tab" role="tab">Seguimiento Convocatorias</a>
                     </li>
                     <li class="nav-item">
-                        <a aria-controls="contact_2" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact_2" id="contact-tab" role="tab">Seguimiento Técnico</a>
+                        <a aria-controls="contact_2" aria-selected="false" class="nav-link" data-toggle="tab"
+                           href="#contact_2" id="contact-tab" role="tab">Seguimiento Técnico</a>
                     </li>
                     <li class="nav-item">
-                        <a aria-controls="contact" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact" id="contact-tab" role="tab">Seguimiento Económico</a>
+                        <a aria-controls="contact" aria-selected="false" class="nav-link" data-toggle="tab"
+                           href="#contact" id="contact-tab" role="tab">Seguimiento Económico</a>
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home" role="tabpanel">
                         <table class="table table-striped">
                             <thead>
-                                <tr>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
-                                    <th scope="col">Handle</th>
-                                </tr>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">First</th>
+                                <th scope="col">Last</th>
+                                <th scope="col">Handle</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                {% for proyecto in proyectos %}
-                                    <tr>
-                                        <td>
-                                            {{ proyecto.nombre }}</td>
-                                        <td>
-                                            {{ proyecto.codigointer }}</td>
-                                        <td>
-                                            {{ proyecto.proyectoenred }}</td>
-                                    </tr>
-                                {% endfor %}
+                            {% for proyecto in proyectos %}
+                                <tr>
+                                    <td>
+                                        {{ proyecto.nombre }}</td>
+                                    <td>
+                                        {{ proyecto.codigointer }}</td>
+                                    <td>
+                                        {{ proyecto.proyectoenred }}</td>
+                                </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
                     <div aria-labelledby="profile-tab" class="tab-pane fade" id="profile" role="tabpanel">
                         <table class="table table-striped">
                             <thead>
-                                <tr>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">Código interno</th>
-                                    <th scope="col">Código contable</th>
-                                    <th scope="col">Tipo de administración</th>
-                                    <th scope="col">Público/Privada</th>
-                                    <th scope="col">Tipo de financiación</th>
-                                </tr>
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Código interno</th>
+                                <th scope="col">Código contable</th>
+                                <th scope="col">Tipo de administración</th>
+                                <th scope="col">Público/Privada</th>
+                                <th scope="col">Tipo de financiación</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                {% for proyecto  in proyectos %}
-                                    <tr>
+                            {% for proyecto  in proyectos %}
+                                <tr>
+                                    <td>
+                                        {{ proyecto.nombre }}</td>
+                                    <td>
+                                        {{ proyecto.codigointer }}</td>
+                                    <td>
+                                        {{ proyecto.codigocontable }}</td>
+                                    {% if proyecto.tipoAdministracion != null %}
                                         <td>
-                                            {{ proyecto.nombre }}</td>
+                                            {{ proyecto.tipoAdministracion.nombre }}</td>
+                                    {% endif %}
+                                    <td>
+                                        {{ proyecto.publicoPrivada }}</td>
+                                    {% if proyecto.tipoFinanciacion != null %}
                                         <td>
-                                            {{ proyecto.codigointer }}</td>
-                                        <td>
-                                            {{ proyecto.codigocontable }}</td>
-                                        {% if proyecto.tipoAdministracion != null %}
-                                            <td>
-                                                {{ proyecto.tipoAdministracion.nombre}}</td>
-                                        {% endif %}
-                                        <td>
-                                            {{ proyecto.publicoPrivada }}</td>
-                                        {% if proyecto.tipoFinanciacion != null %}
-                                            <td>
-                                                {{ proyecto.tipoFinanciacion.nombre}}</td>
-                                        {% endif %}
-                                    </tr>
-                                {% endfor %}
+                                            {{ proyecto.tipoFinanciacion.nombre }}</td>
+                                    {% endif %}
+                                </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
                     <div aria-labelledby="profile-tab" class="tab-pane fade" id="contact_1" role="tabpanel">
                         <table class="table table-striped">
                             <thead>
-                                <tr>
-                                    <th scope="col">Nombre Proyecto</th>
-                                    <th scope="col">Estado</th>
-                                    <th scope="col">Código Administración</th>
-                                    <th scope="col">Tecnico/a Convocatorias Financiador</th>
-                                    <th scope="col">Proyecto en Red</th>
-                                    <th scope="col">Entidad Lider</th>
-                                    <th scope="col">Entidades Sociales</th>
-                                    <th scope="col">Financiador</th>
-                                    <th scope="col">Contacto Administración</th>
-                                    <th scope="col">Link Convocatorias</th>
-                                    <th scope="col">Importe Solicitado</th>
-                                    <th scope="col">Fecha Limite Entrega</th>
-                                    <th scope="col">Importe Concedido</th>
-                                    <th scope="col">Fecha Estimada Resolución</th>
-                                    <th scope="col">Fecha Resolución</th>
-                                    <th scope="col">Periodo Ejecución</th>
-                                    <th scope="col">Fecha Justificación 1</th>
-                                    <th scope="col">Fecha Justificación 2</th>
-                                    <th scope="col">Fecha Requerimiento 1</th>
-                                    <th scope="col">Fecha Requerimiento 2</th>
-                                    <th scope="col">Observaciones</th>
-                                </tr>
+                            <tr>
+                                <th scope="col">Nombre Proyecto</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Código Administración</th>
+                                <th scope="col">Tecnico/a Convocatorias Financiador</th>
+                                <th scope="col">Proyecto en Red</th>
+                                <th scope="col">Entidad Lider</th>
+                                <th scope="col">Entidades Sociales</th>
+                                <th scope="col">Financiador</th>
+                                <th scope="col">Contacto Administración</th>
+                                <th scope="col">Link Convocatorias</th>
+                                <th scope="col">Importe Solicitado</th>
+                                <th scope="col">Fecha Limite Entrega</th>
+                                <th scope="col">Importe Concedido</th>
+                                <th scope="col">Fecha Estimada Resolución</th>
+                                <th scope="col">Fecha Resolución</th>
+                                <th scope="col">Periodo Ejecución</th>
+                                <th scope="col">Fecha Justificación 1</th>
+                                <th scope="col">Fecha Justificación 2</th>
+                                <th scope="col">Fecha Requerimiento 1</th>
+                                <th scope="col">Fecha Requerimiento 2</th>
+                                <th scope="col">Observaciones</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                {% for proyecto  in proyectos %}
-                                    <tr>
+                            {% for proyecto  in proyectos %}
+                                <tr>
+                                    <td>
+                                        {{ proyecto.nombre }}</td>
+                                    {% if proyecto.estado != null %}
                                         <td>
-                                            {{ proyecto.nombre }}</td>
-                                        {% if proyecto.estado != null %}
-                                            <td>
-                                                {{ proyecto.estado.nombre }}</td>
-                                        {% endif %}
+                                            {{ proyecto.estado.nombre }}</td>
+                                    {% endif %}
+                                    <td>
+                                        {{ proyecto.codigocontable }}</td>
+                                    {% if proyecto.tipoAdministracion != null %}
                                         <td>
-                                            {{ proyecto.codigocontable }}</td>
-                                        {% if proyecto.tipoAdministracion != null %}
-                                            <td>
-                                                {{ proyecto.tipoAdministracion.nombre}}</td>
-                                        {% endif %}
-                                        <td>
-                                            {{ proyecto.tecnicoConvocatoria }}</td>
-                                            <td>
-                                                {{ proyecto.entidadLider}}</td>
-                                                <td>
-                                                {{ proyecto.entidadesSociales}}</td>
-                                                  <td>
-                                                {{ proyecto.financiador}}</td>
-                                                  <td>
-                                                {{ proyecto.contactoAdminist}}</td>
-                                                <td>
-                                                {{ proyecto.linkConvacatoria}}</td>
-                                                <td>
-                                                {{ proyecto.importeSolicitado}}</td>
-                                                <td>
-                                                 {{ proyecto.fechaLimiteEntrega|date('Y-m-d')}}</td>
-                                                 <td>
-                                                {{ proyecto.importeConcedido}}</td>
-                                                     <td>
-                                                {{ proyecto.fechaEstimadaResolucion|date('Y-m-d')}}</td>
-                                                  <td>
-                                                {{ proyecto.fechaResolucion|date('Y-m-d')}}</td>
-                                                 <td>
-                                                {{ proyecto.periodoEjecucion}}</td>
-                                                <td>
-                                                {{ proyecto.fechaJustificacion1|date('Y-m-d')}}</td>
-                                                 <td>
-                                                {{ proyecto.fechaJustificacion2|date('Y-m-d')}}</td>
-                                                 <td>
-                                                {{ proyecto.fechaRequi1|date('Y-m-d')}}</td>
-                                                <td>
-                                                {{ proyecto.fechaRequi2|date('Y-m-d')}}</td>
-                                                <td>
-                                                {{ proyecto.observaciones}}</td>
-                                                
-                                    </tr>
-                                {% endfor %}
+                                            {{ proyecto.tipoAdministracion.nombre }}</td>
+                                    {% endif %}
+                                    <td>
+                                        {{ proyecto.tecnicoConvocatoria }}</td>
+                                    <td>
+                                        {{ proyecto.entidadLider }}</td>
+                                    <td>
+                                        {{ proyecto.entidadesSociales }}</td>
+                                    <td>
+                                        {{ proyecto.financiador }}</td>
+                                    <td>
+                                        {{ proyecto.contactoAdminist }}</td>
+                                    <td>
+                                        {{ proyecto.linkConvacatoria }}</td>
+                                    <td>
+                                        {{ proyecto.importeSolicitado }}</td>
+                                    <td>
+                                        {{ proyecto.fechaLimiteEntrega|date('Y-m-d') }}</td>
+                                    <td>
+                                        {{ proyecto.importeConcedido }}</td>
+                                    <td>
+                                        {{ proyecto.fechaEstimadaResolucion|date('Y-m-d') }}</td>
+                                    <td>
+                                        {{ proyecto.fechaResolucion|date('Y-m-d') }}</td>
+                                    <td>
+                                        {{ proyecto.periodoEjecucion }}</td>
+                                    <td>
+                                        {{ proyecto.fechaJustificacion1|date('Y-m-d') }}</td>
+                                    <td>
+                                        {{ proyecto.fechaJustificacion2|date('Y-m-d') }}</td>
+                                    <td>
+                                        {{ proyecto.fechaRequi1|date('Y-m-d') }}</td>
+                                    <td>
+                                        {{ proyecto.fechaRequi2|date('Y-m-d') }}</td>
+                                    <td>
+                                        {{ proyecto.observaciones }}</td>
+
+                                </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
 
-                     <div aria-labelledby="profile-tab" class="tab-pane fade" id="contact_2" role="tabpanel">
+                    <div aria-labelledby="profile-tab" class="tab-pane fade" id="contact_2" role="tabpanel">
                         <table class="table table-striped">
                             <thead>
-                                <tr>
-                                    <th scope="col">Nombre Proyecto</th>
-                                    <th scope="col">Estado</th>
-                                    <th scope="col">Código Administración</th>
-                                    <th scope="col">Tecnico/a Convocatorias Financiador</th>
-                                    <th scope="col">Proyecto en Red</th>
-                                    <th scope="col">Entidad Lider</th>
-                                    <th scope="col">Entidades Sociales</th>
-                                    <th scope="col">Financiador</th>
-                                    <th scope="col">Contacto Administración</th>
-                                    <th scope="col">Link Convocatorias</th>
-                                    <th scope="col">Importe Solicitado</th>
-                                    <th scope="col">Fecha Limite Entrega</th>
-                                    <th scope="col">Importe Concedido</th>
-                                    <th scope="col">Fecha Estimada Resolución</th>
-                                    <th scope="col">Fecha Resolución</th>
-                                    <th scope="col">Periodo Ejecución</th>
-                                    <th scope="col">Fecha Justificación 1</th>
-                                    <th scope="col">Fecha Justificación 2</th>
-                                    <th scope="col">Fecha Requerimiento 1</th>
-                                    <th scope="col">Fecha Requerimiento 2</th>
-                                    <th scope="col">Observaciones</th>
-                                </tr>
+                            <tr>
+                                <th scope="col">Nombre Proyecto</th>
+                                <th scope="col">Estado</th>
+                                <th scope="col">Código Administración</th>
+                                <th scope="col">Tecnico/a Convocatorias Financiador</th>
+                                <th scope="col">Proyecto en Red</th>
+                                <th scope="col">Entidad Lider</th>
+                                <th scope="col">Entidades Sociales</th>
+                                <th scope="col">Financiador</th>
+                                <th scope="col">Contacto Administración</th>
+                                <th scope="col">Link Convocatorias</th>
+                                <th scope="col">Importe Solicitado</th>
+                                <th scope="col">Fecha Limite Entrega</th>
+                                <th scope="col">Importe Concedido</th>
+                                <th scope="col">Fecha Estimada Resolución</th>
+                                <th scope="col">Fecha Resolución</th>
+                                <th scope="col">Periodo Ejecución</th>
+                                <th scope="col">Fecha Justificación 1</th>
+                                <th scope="col">Fecha Justificación 2</th>
+                                <th scope="col">Fecha Requerimiento 1</th>
+                                <th scope="col">Fecha Requerimiento 2</th>
+                                <th scope="col">Observaciones</th>
+                            </tr>
                             </thead>
                             <tbody>
-                                {% for proyecto  in proyectos %}
-                                    <tr>
+                            {% for proyecto  in proyectos %}
+                                <tr>
+                                    <td>
+                                        {{ proyecto.nombre }}</td>
+                                    {% if proyecto.estado != null %}
                                         <td>
-                                            {{ proyecto.nombre }}</td>
-                                        {% if proyecto.estado != null %}
-                                            <td>
-                                                {{ proyecto.estado.nombre }}</td>
-                                        {% endif %}
+                                            {{ proyecto.estado.nombre }}</td>
+                                    {% endif %}
+                                    <td>
+                                        {{ proyecto.codigocontable }}</td>
+                                    {% if proyecto.tipoAdministracion != null %}
                                         <td>
-                                            {{ proyecto.codigocontable }}</td>
-                                        {% if proyecto.tipoAdministracion != null %}
-                                            <td>
-                                                {{ proyecto.tipoAdministracion.nombre}}</td>
-                                        {% endif %}
-                                        <td>
-                                            {{ proyecto.tecnicoConvocatoria }}</td>
-                                            <td>
-                                                {{ proyecto.entidadLider}}</td>
-                                                <td>
-                                                {{ proyecto.entidadesSociales}}</td>
-                                                  <td>
-                                                {{ proyecto.financiador}}</td>
-                                                  <td>
-                                                {{ proyecto.contactoAdminist}}</td>
-                                                <td>
-                                                {{ proyecto.linkConvacatoria}}</td>
-                                                <td>
-                                                {{ proyecto.importeSolicitado}}</td>
-                                                <td>
-                                                 {{ proyecto.fechaLimiteEntrega|date('Y-m-d')}}</td>
-                                                 <td>
-                                                {{ proyecto.importeConcedido}}</td>
-                                                     <td>
-                                                {{ proyecto.fechaEstimadaResolucion|date('Y-m-d')}}</td>
-                                                  <td>
-                                                {{ proyecto.fechaResolucion|date('Y-m-d')}}</td>
-                                                 <td>
-                                                {{ proyecto.periodoEjecucion}}</td>
-                                                <td>
-                                                {{ proyecto.fechaJustificacion1|date('Y-m-d')}}</td>
-                                                 <td>
-                                                {{ proyecto.fechaJustificacion2|date('Y-m-d')}}</td>
-                                                 <td>
-                                                {{ proyecto.fechaRequi1|date('Y-m-d')}}</td>
-                                                <td>
-                                                {{ proyecto.fechaRequi2|date('Y-m-d')}}</td>
-                                                <td>
-                                                {{ proyecto.observaciones}}</td>
-                                                
-                                    </tr>
-                                {% endfor %}
+                                            {{ proyecto.tipoAdministracion.nombre }}</td>
+                                    {% endif %}
+                                    <td>
+                                        {{ proyecto.tecnicoConvocatoria }}</td>
+                                    <td>
+                                        {{ proyecto.entidadLider }}</td>
+                                    <td>
+                                        {{ proyecto.entidadesSociales }}</td>
+                                    <td>
+                                        {{ proyecto.financiador }}</td>
+                                    <td>
+                                        {{ proyecto.contactoAdminist }}</td>
+                                    <td>
+                                        {{ proyecto.linkConvacatoria }}</td>
+                                    <td>
+                                        {{ proyecto.importeSolicitado }}</td>
+                                    <td>
+                                        {{ proyecto.fechaLimiteEntrega|date('Y-m-d') }}</td>
+                                    <td>
+                                        {{ proyecto.importeConcedido }}</td>
+                                    <td>
+                                        {{ proyecto.fechaEstimadaResolucion|date('Y-m-d') }}</td>
+                                    <td>
+                                        {{ proyecto.fechaResolucion|date('Y-m-d') }}</td>
+                                    <td>
+                                        {{ proyecto.periodoEjecucion }}</td>
+                                    <td>
+                                        {{ proyecto.fechaJustificacion1|date('Y-m-d') }}</td>
+                                    <td>
+                                        {{ proyecto.fechaJustificacion2|date('Y-m-d') }}</td>
+                                    <td>
+                                        {{ proyecto.fechaRequi1|date('Y-m-d') }}</td>
+                                    <td>
+                                        {{ proyecto.fechaRequi2|date('Y-m-d') }}</td>
+                                    <td>
+                                        {{ proyecto.observaciones }}</td>
+
+                                </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
