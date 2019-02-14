@@ -44,7 +44,7 @@ class ProjectoType extends AbstractType
         ->add('fechaResolucion')->add('fechaIniEjecucion')->add('fechaFinEjecucion')
         ->add('duracionMeses')->add('fechaJustificacion1')->add('fechaJustificacion2')
         ->add('fechaRequi1')->add('fechaRequi2')->add('fechaLimiteEntrega')->add('periodoEjecucion')
-        ->add('observaciones')->add('resumen', TextareaType::class, [
+        ->add('observaciones')->add('pendienteCobro')->add('resumen', TextareaType::class, [
             'attr' => ['class' => 'tinymce'],
         ])->add('actEmblematicas', TextareaType::class, [
             'attr' => ['class' => 'tinymce'],

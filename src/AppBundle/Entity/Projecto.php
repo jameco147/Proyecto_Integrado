@@ -293,6 +293,13 @@ class Projecto
      */
     private $fechaLimiteEntrega;
 
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="pendienteCobro", type="float")
+     */
+    private $pendienteCobro;
+
 
     public function __construct()
     {
@@ -1286,6 +1293,31 @@ class Projecto
     public function setActEmblematicas(string $actEmblematicas)
     {
         $this->actEmblematicas = $actEmblematicas;
+
+        return $this;
+    }
+
+    /**
+     * Get codigoInter.
+     *
+     * @return float
+     */
+    public function getPendienteCobro()
+    {
+        return $this->pendienteCobro;
+    }
+
+
+    /**
+     * Set the value of pendienteCobro
+     *
+     * @param  float  $pendienteCobro
+     *
+     * @return  self
+     */
+    public function setPendienteCobro(float $pendienteCobro)
+    {
+        $this->pendienteCobro = $pendienteCobro;
 
         return $this;
     }

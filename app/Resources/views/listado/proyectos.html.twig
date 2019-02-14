@@ -288,7 +288,7 @@
                         {% for proyecto  in proyectos %}
                                   <tr>
                                  <td>{{proyecto.importeConcedido}}</td>
-                                 <td>Pendiente COBRO</td>
+                                 <td>{{ proyecto.pendienteCobro }}</td>
 
                                         {% if proyecto.progPago is empty  %}
                                             <td>0</td>
