@@ -12,15 +12,15 @@
                     </a>
 
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="d">E-Inclusión</a>
-                        <a class="dropdown-item" href="#">Innovación social</a>
-                        <a class="dropdown-item" href="#">Educación para la ciudadanía</a>
-                        <a class="dropdown-item" href="#">Cooperación para el desarrollo</a>
+                        <a class="dropdown-item" href="{{ path('listadoProyectos', {'tipo': 1}) }}">E-Inclusión</a>
+                        <a class="dropdown-item" href="{{ path('listadoProyectos', {'tipo': 2}) }}">Innovación social</a>
+                        <a class="dropdown-item" href="{{ path('listadoProyectos', {'tipo': 3}) }}">Educación para la ciudadanía</a>
+                        <a class="dropdown-item" href="{{ path('listadoProyectos', {'tipo': 4}) }}">Cooperación para el desarrollo</a>
                     </div>
                 </div>
             </div>
             <div class="col-12 mt-5">
-                <a href="{{ path('homepage') }}" class="btn btn-lg  botonjove text-white mb-3 mt-5">Volver</a>
+                <a href="{{ path('menu') }}" class="btn btn-lg  botonjove text-white mb-3 mt-5">Volver</a>
             </div>
         </div>
     </div>

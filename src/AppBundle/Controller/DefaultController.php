@@ -20,13 +20,37 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("listadoProyectos", name="listadoProyectos")
+     * @Route("listadoProyectos/{tipo}", name="listadoProyectos")
      */
-    public function proyectosAction(Request $request)
+    public function proyectosAction(Request $request,$tipo)
     {
         $proyectoRepository = $this->getDoctrine()->getRepository(Projecto::class);
-        $proyectos = $proyectoRepository->findAll();
-       return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos));
+        if($tipo == 1){
+            $proyectos = $proyectoRepository->findByTipoProyecto('E-INCLUSION');
+            if ($this->redirectAction($proyectos)){
+                return $this->redirectToRoute('menu');
+            }
+            return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos));
+        } else if($tipo == 2){
+            $proyectos = $proyectoRepository->findByTipoProyecto('INNOVACIÓN SOCIAL Y EMPRENDIMIENTO SOCIAL');
+            if ($this->redirectAction($proyectos)){
+                return $this->redirectToRoute('menu');
+            }
+            return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos));
+        } else if($tipo == 3){
+            $proyectos = $proyectoRepository->findByTipoProyecto('EDUCACIÓN PARA LA CUIDADANÍA Y EL DESARROLLO GLOBAL');
+            if ($this->redirectAction($proyectos)){
+                return $this->redirectToRoute('menu');
+            }
+            return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos));
+        } else if($tipo == 4){
+            $proyectos = $proyectoRepository->findByTipoProyecto('COOPERACIÓN PARA EL DESARROLLO');
+            if ($this->redirectAction($proyectos)){
+                return $this->redirectToRoute('menu');
+            }
+            return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos));
+        }
+
     }
 
     /**
@@ -34,10 +58,17 @@ class DefaultController extends Controller
      */
     public function seleccionAction(Request $request)
     {
-        return $this->render('seleccionProyecto/seleccion.html.twig');
+        $proyectoRepository = $this->getDoctrine()->getRepository(Projecto::class);
+        $proyectos = $proyectoRepository->findAll();
+        //var_dump($proyectos);
+        return $this->render('seleccionProyecto/seleccion.html.twig', array('proyectos' => $proyectos));
     }
 
-
+    private function redirectAction($proyectos){
+        if($proyectos === []){
+            return true;
+        }
+    }
 
 
 }

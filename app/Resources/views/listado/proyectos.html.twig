@@ -3,7 +3,9 @@
     <div class="container-fluid mt-5">
         <div class="row">
             <div class="col-12">
-                <h1 class="lead offset-1 mb-5">E-INCLUSIÓN</h1>
+
+                <h1 class="lead offset-1 mb-5">{{ proyectos[0].tipoProyecto }}</h1>
+
                 <!--Este campo será una variable-->
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
@@ -207,7 +209,7 @@
                                                 {{ (proyecto.beneficiaria.infanciaHombre + proyecto.beneficiaria.infanciaMujer +
                                                 proyecto.beneficiaria.juventudHombre + proyecto.beneficiaria.juventudMujer +
                                                 proyecto.beneficiaria.adultosHombre + proyecto.beneficiaria.adultosMujer +
-                                                 proyecto.beneficiaria.mayoresHombre + proyecto.beneficiaria.mayoresMujer 
+                                                 proyecto.beneficiaria.mayoresHombre + proyecto.beneficiaria.mayoresMujer
                                                 )}}
                                             </td>
                                             <td>
@@ -299,22 +301,22 @@
                                             <td>0</td>
                                             <td>0</td>
                                             <td>0</td>
-                                       
+
                                         {% endif %}
                             {% for _proyecto  in proyecto.progPago %}
-                                          
+
                                         {% if _proyecto.idPago.fechaEstimada != null %}
                                             <td>{{_proyecto.idPago.fechaEstimada|date('Y-m-d')}}</td>
                                             {% endif %}
 
                                         {% if _proyecto.idPago.cantidad != null %}
                                             <td>{{_proyecto.idPago.cantidad}}</td>
-                                        
+
                                         {% endif %}
 
                                         {% if _proyecto.idPago.fechaPago != null %}
                                             <td>{{_proyecto.idPago.fechaPago|date('Y-m-d')}}</td>
-                                       
+
                                         {% endif %}
 
                             {% endfor %}
@@ -330,4 +332,3 @@
                 </div>
             </div>
         {% endblock %}
-    
