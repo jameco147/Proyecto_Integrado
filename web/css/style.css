@@ -1,3 +1,8 @@
+body{
+    font-family: 'Raleway', sans-serif;
+}
+
+
 .logoCabecera {
     width: 175px;
     height: 65px;
@@ -13,7 +18,7 @@
 
 }
 
-/*--- Selección Proyecto ---*/
+/*--- SELECCIÓN PROYECTO ---*/
 
 .seleccion {
     padding: 60px;
@@ -31,4 +36,20 @@
 
 .pruebaBoton:hover{
     background-color: #d21e56;
+}
+
+/*--- FORMULARIOS ---*/
+
+.tituloFormulario {
+    font-weight: 300;
+    letter-spacing: 0.7rem;
+    font-size: 4rem;
+    color: #355450;
+}
+
+.formulario {
+    border: 0.5px solid #d8db92;
+    border-radius: 15px;
+    padding: 35px 85px;
+    background-color: #d8db92;
 }
