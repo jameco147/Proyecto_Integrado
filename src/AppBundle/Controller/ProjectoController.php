@@ -271,7 +271,7 @@ class ProjectoController extends Controller
             $pro[0]->setPoblaVulnerable($pob_vul);
             $entityManager->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('menu');
         }
         return $this->render('default/addPoblacionVulnerable.html.twig', array('form'=>$form->createView()));
     }
