@@ -270,9 +270,60 @@
                             </tbody>
                         </table>
                     </div>
-                    <div aria-labelledby="contact-tab" class="tab-pane fade" id="contact" role="tabpanel">...</div>
-                      
-                      
+                    <div aria-labelledby="contact-tab" class="tab-pane fade" id="contact_3" role="tabpanel">
+                     <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Importe Condedido</th>
+                                       <th scope="col">Pendiente Cobro</th>
+
+                                {% for proyecto  in proyectos %}
+                                    {% for _proyecto  in proyecto.progPago %}
+                                        {% if _proyecto.idPago.fechaEstimada != null %}
+                                        <th scope="col">Fecha Estimada</th>
+                                        <th scope="col">Cantidad</th>
+                                        <th scope="col">Fecha Pago</th>
+                                        {% endif %}
+                                {% endfor %}
+                             {% endfor %}
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                        {% for proyecto  in proyectos %}
+                                  <tr>
+                                 <td>{{proyecto.importeConcedido}}</td>
+                                 <td>Pendiente COBRO</td>
+
+                                        {% if proyecto.progPago is empty  %}
+                                            <td>0</td>
+                                            <td>0</td>
+                                            <td>0</td>
+                                       
+                                        {% endif %}
+                            {% for _proyecto  in proyecto.progPago %}
+                                          
+                                        {% if _proyecto.idPago.fechaEstimada != null %}
+                                            <td>{{_proyecto.idPago.fechaEstimada|date('Y-m-d')}}</td>
+                                            {% endif %}
+
+                                        {% if _proyecto.idPago.cantidad != null %}
+                                            <td>{{_proyecto.idPago.cantidad}}</td>
+                                        
+                                        {% endif %}
+
+                                        {% if _proyecto.idPago.fechaPago != null %}
+                                            <td>{{_proyecto.idPago.fechaPago|date('Y-m-d')}}</td>
+                                       
+                                        {% endif %}
+
+                            {% endfor %}
+                          <!-- proyecto.pendienteCobro -->
+                                 </tr>
+                        {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                             </div>
                         </div>
                     </div>
