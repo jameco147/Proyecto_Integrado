@@ -86,6 +86,7 @@ class ProjectoController extends Controller
     }
     private function beneficiariasAction($request, $proy)
     {
+        
         $bene = new Beneficiarias();
         $form = $this->createForm(BeneficiariasType::class, $bene);
         $form->handleRequest($request);
