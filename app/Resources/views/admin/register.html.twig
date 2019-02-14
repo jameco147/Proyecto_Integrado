@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>JovesSolides</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('css/login.css') }}">
+    <script src="main.js"></script>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+</head>
+
+<body>
+    <a href="#"><img class="img-fluid logoCabecera" src="images/jovesolides.logo.png" alt=""></a>
+    <section class="login-block">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 login-sec">
+                    <h2 class="text-center">Registro</h2>
+                    <form class="login-form">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" class="text-uppercase">Usuario</label>
+                            <input type="text" class="form-control" placeholder="Usuario">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" class="text-uppercase">Contraseña</label>
+                            <input type="password" class="form-control" placeholder="Contraseña">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputName1" class="text-uppercase">Nombre</label>
+                            <input type="text" class="form-control" placeholder="Nombre">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputApellidos1" class="text-uppercase">Apellidos</label>
+                            <input type="text" class="form-control" placeholder="Apellidos">
+                        </div>
+
+                        <div class="form-check">
+                            <label class="form-check-label">
+                                <input type="checkbox" class="form-check-input">
+                                <small>Recordar Contraseña</small>
+                            </label>
+                        </div>
+                        <div class="container-fluid" style="margin:5px; ">
+                            <a href="{{ path('login') }}" class="btn btn-login">Registrar</a>
+                        </div>
+
+
+                    </form>
+                </div>
+                <div class="col-md-8 banner-sec">
+
+                        <div class="container">
+                            <div class="carousel-item img-fluid">
+                                <img class="d-block" style="height: 550px" src="http://jovesolides.org/wp-content/uploads/2018/05/jovesolides_emprendimiento-social_2018.jpg" alt="First slide">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <div class="banner-text">
+                                        <h2>JovesSolides</h2>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                            quis nostrud exercitation</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                </div>
+            </div>
+        <div>
+    </section>
+
+</body>
+
+</html>

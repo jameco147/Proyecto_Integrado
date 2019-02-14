@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <a href="#"><img class="img-fluid logoCabecera" style="height:100px" src="images/jovesolides.logo.png" alt=""></a>
+    <a href="#"><img class="img-fluid logoCabecera" src="images/jovesolides.logo.png" alt=""></a>
     <section class="login-block">
         <div class="container">
             <div class="row">
@@ -45,8 +45,8 @@
                             </label>
                         </div>
                         <div class="container-fluid" style="margin:5px">
-                            <button type="submit" class="btn btn-login float-left">Acceder</button>
-                            <button type="submit" class="btn btn-login float-right">Registrar</button>
+                            <a href="{{ path('menu') }}" class="btn btn-login float-left">Acceder</a>
+                            <a href="{{ path('registro') }}" class="btn btn-login float-right">Registrar</a>
                         </div>
 
 
