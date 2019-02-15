@@ -29,13 +29,9 @@ use AppBundle\Form\EstadoType;
 use AppBundle\Entity\PoblacionVulnerable;
 use AppBundle\Form\PoblacionVulnerableType;
 
-
-
 /**
  * @Route("/nuevoProyecto")
  */
-
-
 
 class ProjectoController extends Controller
 {
@@ -44,11 +40,13 @@ class ProjectoController extends Controller
      */
     public function indexAction(Request $request, $estado=null, $proy=null)
     {
+        
         if ($estado==null) {
             return $this->projectoAction($request, $proy);
         } elseif ($estado=='beneficiarias') {
             return $this->beneficiariasAction($request, $proy);
-        } elseif ($estado=='pago') {
+        } 
+        elseif ($estado=='pago') {
             return $this->pagoAction($request, $proy);
         } elseif ($estado=='impactoSocial') {
             return $this->impactoSocialAction($request, $proy);
@@ -64,13 +62,23 @@ class ProjectoController extends Controller
         elseif ($estado=='poblacionVulnerable') {
             return $this->poblacionVulnerableAction($request, $proy);
         }
+        elseif ($estado == 'finalizar')
+        {
+            return $this->finalizarAction($proy);
+        }
         else {
             return $this->redirectToRoute('homepage');
         }
     }
     private function projectoAction($request, $proy)
     {
-        $proye = new Projecto();
+        dump($proy);
+        if($proy === null)
+            $proye = new Projecto();
+        else {
+            $repository = $this->getDoctrine()->getRepository(Projecto::class);
+            $proye = $repository->findById($proy);
+        }
         $form = $this->createForm(ProjectoType::class, $proye);
         $form->handleRequest($request);
      
@@ -80,13 +88,12 @@ class ProjectoController extends Controller
             $entityManager->persist($proye);
             $entityManager->flush();
 
-            return $this->redirectToRoute('homepage', array('estado'=>'beneficiarias', 'proy'=>$proye->getId()));
+           return $this->redirectToRoute('homepage', array('estado'=>'beneficiarias', 'proy'=>$proye->getId()));
         }
         return $this->render('default/addProj.html.twig', array('form'=>$form->createView()));
     }
     private function beneficiariasAction($request, $proy)
     {
-        
         $bene = new Beneficiarias();
         $form = $this->createForm(BeneficiariasType::class, $bene);
         $form->handleRequest($request);
@@ -104,7 +111,7 @@ class ProjectoController extends Controller
 
             return $this->redirectToRoute('homepage', array('estado'=>'pago', 'proy'=>$proy));
         }
-        return $this->render('default/addBeneficiarias.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addBeneficiarias.html.twig', array('form'=>$form->createView(), 'proy'=>$proy));
     }
 
 
@@ -135,7 +142,7 @@ class ProjectoController extends Controller
 
             return $this->redirectToRoute('homepage', array('estado'=>'impactoSocial', 'proy'=>$proy));
         }
-        return $this->render('default/addPago.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addPago.html.twig', array('form'=>$form->createView(), 'proy'=>$proy));
     }
 
 
@@ -303,4 +310,80 @@ class ProjectoController extends Controller
         return $this->render('default/addEquipo.html.twig', array('form'=>$form->createView()));
     }
     */
+
+    private function finalizarAction($proy)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository(Projecto::class);
+        $pro = $repository->findById($proy);
+
+    if($pro[0]->getBeneficiaria() === null)
+        {
+            $bene = new Beneficiarias();
+            $entityManager->persist($bene);
+            $pro[0]->setBeneficiaria($bene);
+        }
+    if( count($pro[0]->getProgPago())=== 0)
+        {
+            $pago = new Pago();
+            $prog_pago = new Prog_Pago();
+
+            $entityManager->persist($pago);
+            $entityManager->persist($prog_pago);
+
+            $pro[0]->addProgPago($prog_pago);
+
+            $prog_pago->setIdProjecto($pro[0]);
+            $prog_pago->setIdPago($pago);
+        }
+
+        if($pro[0]->getImpactoSocial() === null)
+        {
+            $imp = new ImpactoSocial();
+            $entityManager->persist($imp);
+            $pro[0]->setImpactoSocial($imp);
+        }
+
+        if($pro[0]->getTipoAdministracion() === null)
+        {
+            $tipo = new TipoAdministracion();
+            $entityManager->persist($tipo);
+            $pro[0]->setTipoAdministracion($tipo);
+        }
+
+        if($pro[0]->getTipoFinanciacion() === null)
+        {
+            $tipoF = new TipoFinanciacion();
+            $entityManager->persist($tipoF);
+            $pro[0]->setTipoFinanciacion($tipoF);
+        }
+
+
+        if($pro[0]->getPlanEstrategico() === null)
+        {
+            $plan = new PlanEstrategico();
+            $entityManager->persist($plan);
+            $pro[0]->setPlanEstrategico($plan);
+        }
+
+        if($pro[0]->getEstado() === null)
+        {
+            $est = new Estado();
+            $entityManager->persist($est);
+            $pro[0]->setEstado($est);
+        }
+        if($pro[0]->getPoblaVulnerable() === null)
+        {
+            $pob = new PoblacionVulnerable();
+            $entityManager->persist($pob);
+            $pro[0]->setPoblaVulnerable($pob);
+        }
+
+
+        $entityManager->flush();
+       return $this->redirectToRoute('homepage');
+
+    }
+
+
 }

@@ -24,70 +24,70 @@ class ImpactoSocial
     /**
      * @var bool
      *
-     * @ORM\Column(name="desarrolloRural", type="boolean")
+     * @ORM\Column(name="desarrolloRural", type="boolean",  nullable=true)
      */
     private $desarrolloRural;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="desarrolloPersonal", type="boolean")
+     * @ORM\Column(name="desarrolloPersonal", type="boolean",  nullable=true)
      */
     private $desarrolloPersonal;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="desarrolloProfesional", type="boolean")
+     * @ORM\Column(name="desarrolloProfesional", type="boolean",  nullable=true)
      */
     private $desarrolloProfesional;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="inclusionDigital", type="boolean")
+     * @ORM\Column(name="inclusionDigital", type="boolean",  nullable=true)
      */
     private $inclusionDigital;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="sensibilizacionSocial", type="boolean")
+     * @ORM\Column(name="sensibilizacionSocial", type="boolean",  nullable=true)
      */
     private $sensibilizacionSocial;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="insercionLaboral", type="boolean")
+     * @ORM\Column(name="insercionLaboral", type="boolean",  nullable=true)
      */
     private $insercionLaboral;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="socioeducativo", type="boolean")
+     * @ORM\Column(name="socioeducativo", type="boolean",  nullable=true)
      */
     private $socioeducativo;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="sociosanitario", type="boolean")
+     * @ORM\Column(name="sociosanitario", type="boolean",  nullable=true)
      */
     private $sociosanitario;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="viviendaSocial", type="boolean")
+     * @ORM\Column(name="viviendaSocial", type="boolean",  nullable=true)
      */
     private $viviendaSocial;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="otros", type="boolean")
+     * @ORM\Column(name="otros", type="boolean",  nullable=true)
      */
     private $otros;
 

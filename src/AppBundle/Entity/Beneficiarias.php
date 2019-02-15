@@ -24,56 +24,56 @@ class Beneficiarias
     /**
      * @var int
      *
-     * @ORM\Column(name="infanciaHombre", type="integer")
+     * @ORM\Column(name="infanciaHombre", type="integer",  nullable=true)
      */
     private $infanciaHombre;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="infanciaMujer", type="integer")
+     * @ORM\Column(name="infanciaMujer", type="integer",  nullable=true)
      */
     private $infanciaMujer;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="juventudHombre", type="integer")
+     * @ORM\Column(name="juventudHombre", type="integer",  nullable=true)
      */
     private $juventudHombre;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="juventudMujer", type="integer")
+     * @ORM\Column(name="juventudMujer", type="integer",  nullable=true)
      */
     private $juventudMujer;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="adultosHombre", type="integer")
+     * @ORM\Column(name="adultosHombre", type="integer",  nullable=true)
      */
     private $adultosHombre;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="adultosMujer", type="integer")
+     * @ORM\Column(name="adultosMujer", type="integer",  nullable=true)
      */
     private $adultosMujer;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="mayoresHombre", type="integer")
+     * @ORM\Column(name="mayoresHombre", type="integer",  nullable=true)
      */
     private $mayoresHombre;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="mayoresMujer", type="integer")
+     * @ORM\Column(name="mayoresMujer", type="integer",  nullable=true)
      */
     private $mayoresMujer;
 
