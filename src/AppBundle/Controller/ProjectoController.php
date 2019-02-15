@@ -64,6 +64,10 @@ class ProjectoController extends Controller
         elseif ($estado=='poblacionVulnerable') {
             return $this->poblacionVulnerableAction($request, $proy);
         }
+        elseif ($estado == 'finalizar')
+        {
+            return $this->finalizarAction($proy);
+        }
         else {
             return $this->redirectToRoute('homepage');
         }
@@ -86,7 +90,6 @@ class ProjectoController extends Controller
     }
     private function beneficiariasAction($request, $proy)
     {
-        
         $bene = new Beneficiarias();
         $form = $this->createForm(BeneficiariasType::class, $bene);
         $form->handleRequest($request);
@@ -104,7 +107,7 @@ class ProjectoController extends Controller
 
             return $this->redirectToRoute('homepage', array('estado'=>'pago', 'proy'=>$proy));
         }
-        return $this->render('default/addBeneficiarias.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addBeneficiarias.html.twig', array('form'=>$form->createView(), 'proy'=>$proy));
     }
 
 
@@ -135,7 +138,7 @@ class ProjectoController extends Controller
 
             return $this->redirectToRoute('homepage', array('estado'=>'impactoSocial', 'proy'=>$proy));
         }
-        return $this->render('default/addPago.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addPago.html.twig', array('form'=>$form->createView(), 'proy'=>$proy));
     }
 
 
@@ -303,4 +306,38 @@ class ProjectoController extends Controller
         return $this->render('default/addEquipo.html.twig', array('form'=>$form->createView()));
     }
     */
+
+    private function finalizarAction($proy)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository(Projecto::class);
+        $pro = $repository->findById($proy);
+
+      
+
+        if($pro[0]->getBeneficiaria() === null)
+        {
+            $bene = new Beneficiarias();
+            $entityManager->persist($bene);
+            $pro[0]->setBeneficiaria($bene);
+        }
+      if( count($pro[0]->getProgPago())=== 0)
+        {
+            $pago = new Pago();
+            $prog_pago = new Prog_Pago();
+
+            $entityManager->persist($pago);
+            $entityManager->persist($prog_pago);
+
+            $pro[0]->addProgPago($prog_pago);
+
+            $prog_pago->setIdProjecto($pro[0]);
+            $prog_pago->setIdPago($pago);
+        }
+        $entityManager->flush();
+       return $this->redirectToRoute('homepage');
+
+    }
+
+
 }
