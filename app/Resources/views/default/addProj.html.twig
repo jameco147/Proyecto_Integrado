@@ -8,17 +8,195 @@
 
 
 {% block body %}
-      <div class="container mt-3">
-            <div class="row d-flex justify-content-center">
-                  <div class="col-8">
-                        <h1 class="tituloFormulario">Nuevo Proyecto</h1>
-                        <hr class="mb-5">
-                        <div class="formulario">
-                              {{form_start(form)}}
-                              {{form_widget(form)}}
-                              {{form_end(form)}}
-                        </div>
+      <div class="container">
+            <div class="row">
+                  <div class="col-12">
+                        <h1 class="text-center tituloFormulario mb-3">Nuevo Proyecto</h1>
                   </div>
             </div>
+      </div>
+      <div class="container mt-3 formulario">
+            <div class="row">
+                  <div class="col-6">
+                        {{form_start(form)}}
+                        {{form_label(form.tipoProyecto,'Tipo de proyecto')}}
+                        {{form_widget(form.tipoProyecto)}}
+                        {{form_errors(form.tipoProyecto)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.codigoInter,'Código interno')}}
+                        {{form_widget(form.codigoInter)}}
+                        {{form_errors(form.codigoInter)}}
+                  </div>
+            </div>
+            <div class="row mt-4">
+                  <div class="col-6">
+                        {{form_label(form.codigoAdministracion,'Código administración')}}
+                        {{form_widget(form.codigoAdministracion)}}
+                        {{form_errors(form.codigoAdministracion)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.tecnicoConvocatoria,'Técnico convocatoria')}}
+                        {{form_widget(form.tecnicoConvocatoria)}}
+                        {{form_errors(form.tecnicoConvocatoria)}}
+                  </div>
+            </div>
+            <div class="row mt-4">
+                  <div class="col-6">
+                        {{form_label(form.codigoContable,'Código contable')}}
+                        {{form_widget(form.codigoContable)}}
+                        {{form_errors(form.codigoContable)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.publicoPrivada,'Público/Privada')}}
+                        {{form_widget(form.publicoPrivada)}}
+                        {{form_errors(form.publicoPrivada)}}
+                  </div>
+            </div>
+            <div class="row mt-4">
+                  <div class="col-6">
+                        {{form_label(form.nombre,'Nombre')}}
+                        {{form_widget(form.nombre)}}
+                        {{form_errors(form.nombre)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.proyectoEnRed,'Proyecto en red')}}
+                        {{form_widget(form.proyectoEnRed)}}
+                        {{form_errors(form.proyectoEnRed)}}
+                  </div>
+            </div>
+            <div class="row mt-4">
+                  <div class="col-6">
+                        {{form_label(form.entidadLider,'Entidad líder')}}
+                        {{form_widget(form.entidadLider)}}
+                        {{form_errors(form.entidadLider)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.entidadesSociales,'Entidades sociales')}}
+                        {{form_widget(form.entidadesSociales)}}
+                        {{form_errors(form.entidadesSociales)}}
+                  </div>
+            </div>
+            <div class="row mt-4">
+                  <div class="col-6">
+                        {{form_label(form.financiador,'Financiador')}}
+                        {{form_widget(form.financiador)}}
+                        {{form_errors(form.financiador)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.contactoAdminist,'Contacto administrador')}}
+                        {{form_widget(form.contactoAdminist)}}
+                        {{form_errors(form.contactoAdminist)}}
+                  </div>
+            </div>
+            <div class="row mt-4">
+                  <div class="col-6">
+                        {{form_label(form.linkConvacatoria,'Link convocatoria')}}
+                        {{form_widget(form.linkConvacatoria)}}
+                        {{form_errors(form.linkConvacatoria)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.importeSolicitado,'Importe solicitado')}}
+                        {{form_widget(form.importeSolicitado)}}
+                        {{form_errors(form.importeSolicitado)}}
+                  </div>
+            </div>
+            <div class="row">
+                  <div class="col-12">
+                        {{form_label(form.importeConcedido,'Importe concedido')}}
+                        {{form_widget(form.importeConcedido)}}
+                        {{form_errors(form.importeConcedido)}}
+                  </div>
+            </div>
+            <div class="row mt-4">
+                  <div class="col-6">
+                        {{form_label(form.fechaEstimadaResolucion,'Fecha estimada resolucion')}}
+                        {{form_widget(form.fechaEstimadaResolucion)}}
+                        {{form_errors(form.fechaEstimadaResolucion)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.fechaResolucion,'Fecha resolucion')}}
+                        {{form_widget(form.fechaResolucion)}}
+                        {{form_errors(form.fechaResolucion)}}
+                  </div>
+            </div>
+            <div class="row mt-4">
+                  <div class="col-6">
+                        {{form_label(form.fechaIniEjecucion,'Fecha inicio ejecución')}}
+                        {{form_widget(form.fechaIniEjecucion)}}
+                        {{form_errors(form.fechaIniEjecucion)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.fechaFinEjecucion,'Fecha fin ejecucion')}}
+                        {{form_widget(form.fechaFinEjecucion)}}
+                        {{form_errors(form.fechaFinEjecucion)}}
+                  </div>
+            </div>
+            <div class="row mt-5">
+                  <div class="col-12">
+                        {{form_label(form.duracionMeses,'Duración meses')}}
+                        {{form_widget(form.duracionMeses)}}
+                        {{form_errors(form.duracionMeses)}}
+                  </div>
+            </div>
+            <div class="row mt-4">
+                  <div class="col-6">
+                        {{form_label(form.fechaJustificacion1,'Fecha justificacion 1')}}
+                        {{form_widget(form.fechaJustificacion1)}}
+                        {{form_errors(form.fechaJustificacion1)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.fechaJustificacion2,'Fecha justificacion 2')}}
+                        {{form_widget(form.fechaJustificacion2)}}
+                        {{form_errors(form.fechaJustificacion2)}}
+                  </div>
+            </div>
+            <div class="row mt-4">
+                  <div class="col-4">
+                        {{form_label(form.fechaRequi1,'Fecha requerimiento 1')}}
+                        {{form_widget(form.fechaRequi1)}}
+                        {{form_errors(form.fechaRequi1)}}
+                  </div>
+                  <div class="col-4">
+                        {{form_label(form.fechaRequi2,'Fecha requerimiento 2')}}
+                        {{form_widget(form.fechaRequi2)}}
+                        {{form_errors(form.fechaRequi2)}}
+                  </div>
+                  <div class="col-4">
+                        {{form_label(form.fechaLimiteEntrega,'Fecha límite de entrega')}}
+                        {{form_widget(form.fechaLimiteEntrega)}}
+                        {{form_errors(form.fechaLimiteEntrega)}}
+                  </div>
+            </div>
+            <div class="row mt-4">
+                  <div class="col-4">
+                        {{form_label(form.periodoEjecucion,'Periodo de ejecución')}}
+                        {{form_widget(form.periodoEjecucion)}}
+                        {{form_errors(form.periodoEjecucion)}}
+                  </div>
+                  <div class="col-4">
+                        {{form_label(form.pendienteCobro,'Pendiente de cobro')}}
+                        {{form_widget(form.pendienteCobro)}}
+                        {{form_errors(form.pendienteCobro)}}
+                  </div>
+                  <div class="col-4">
+                        {{form_label(form.observaciones,'Observaciones')}}
+                        {{form_widget(form.observaciones)}}
+                        {{form_errors(form.observaciones)}}
+                  </div>
+            </div>
+            <div class="row mt-4">
+                  <div class="col-6">
+                        {{form_label(form.resumen,'Resumen')}}
+                        {{form_widget(form.resumen)}}
+                        {{form_errors(form.resumen)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.actEmblematicas,'Actividades emblemáticas')}}
+                        {{form_widget(form.actEmblematicas)}}
+                        {{form_errors(form.actEmblematicas)}}
+                  </div>
+            </div>
+            {{form_end(form)}}
       </div>
 {% endblock %}

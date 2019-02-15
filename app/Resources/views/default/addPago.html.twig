@@ -3,19 +3,40 @@
 
 
 {% block title %}
-      Pagos
+     Pagos
 {% endblock %}
 
 
 {% block body %}
       <div class="container">
-            <h1>Pagos</h1>
-            <div class="row d-flex justify-content-center">
-                  <div class="col-6">
-                        {{form_start(form)}}
-                        {{form_widget(form)}}
-                        {{form_end(form)}}
+            <div class="row">
+                  <div class="col-12">
+                        <h1 class="text-center tituloFormulario mb-3">Pagos</h1>
                   </div>
             </div>
+      </div>
+
+      <div class="container mt-3 formulario">
+            <div class="row">
+                  <div class="col-6">
+                        {{form_start(form)}}
+                        {{form_label(form.fechaEstimada,'Fecha estimada')}}
+                        {{form_widget(form.fechaEstimada)}}
+                        {{form_errors(form.fechaEstimada)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.fechaPago,'Fecha pago')}}
+                        {{form_widget(form.fechaPago)}}
+                        {{form_errors(form.fechaPago)}}
+                  </div>
+            </div>
+            <div class="row mt-4 mb-4">
+                  <div class="col-6">
+                        {{form_label(form.cantidad,'Cantidad')}}
+                        {{form_widget(form.cantidad)}}
+                        {{form_errors(form.cantidad)}}
+                  </div>
+            </div>
+            {{form_end(form)}}
       </div>
 {% endblock %}
