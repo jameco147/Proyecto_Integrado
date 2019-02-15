@@ -24,49 +24,49 @@ class PoblacionVulnerable
     /**
      * @var bool
      *
-     * @ORM\Column(name="exclusionSocial", type="boolean")
+     * @ORM\Column(name="exclusionSocial", type="boolean",  nullable=true)
      */
     private $exclusionSocial;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="mayores", type="boolean")
+     * @ORM\Column(name="mayores", type="boolean",  nullable=true)
      */
     private $mayores;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="mujeres", type="boolean")
+     * @ORM\Column(name="mujeres", type="boolean",  nullable=true)
      */
     private $mujeres;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="ninyos", type="boolean")
+     * @ORM\Column(name="ninyos", type="boolean",  nullable=true)
      */
     private $ninyos;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="jovenes", type="boolean")
+     * @ORM\Column(name="jovenes", type="boolean",  nullable=true)
      */
     private $jovenes;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="migrantes", type="boolean")
+     * @ORM\Column(name="migrantes", type="boolean",  nullable=true)
      */
     private $migrantes;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="otros", type="boolean")
+     * @ORM\Column(name="otros", type="boolean",  nullable=true)
      */
     private $otros;
 
