@@ -9,13 +9,63 @@
 
 {% block body %}
       <div class="container">
-            <h1>Beneficiarias</h1>
-            <div class="row d-flex justify-content-center">
-                  <div class="col-6">
-                        {{form_start(form)}}
-                        {{form_widget(form)}}
-                        {{form_end(form)}}
+            <div class="row">
+                  <div class="col-12">
+                        <h1 class="text-center tituloFormulario mb-3">Beneficiarias</h1>
                   </div>
             </div>
+      </div>
+
+      <div class="container mt-3 formulario">
+            <div class="row">
+                  <div class="col-6">
+                        {{form_start(form)}}
+                        {{form_label(form.infanciaHombre,'Infancia hombre')}}
+                        {{form_widget(form.infanciaHombre)}}
+                        {{form_errors(form.infanciaHombre)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.infanciaMujer,'Infancia Mujer')}}
+                        {{form_widget(form.infanciaMujer)}}
+                        {{form_errors(form.infanciaMujer)}}
+                  </div>
+            </div>
+            <div class="row mt-4">
+                  <div class="col-6">
+                        {{form_label(form.juventudHombre,'Juventud hombre')}}
+                        {{form_widget(form.juventudHombre)}}
+                        {{form_errors(form.juventudHombre)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.infanciaMujer,'Juventud Mujer')}}
+                        {{form_widget(form.juventudMujer)}}
+                        {{form_errors(form.juventudMujer)}}
+                  </div>
+            </div>
+            <div class="row mt-4">
+                  <div class="col-6">
+                        {{form_label(form.adultosHombre,'Adultos hombre')}}
+                        {{form_widget(form.adultosHombre)}}
+                        {{form_errors(form.adultosHombre)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.adultosMujer,'Adultos mujer')}}
+                        {{form_widget(form.adultosMujer)}}
+                        {{form_errors(form.adultosMujer)}}
+                  </div>
+            </div>
+            <div class="row mt-4 mb-4">
+                  <div class="col-6">
+                        {{form_label(form.mayoresHombre,'Mayores hombre')}}
+                        {{form_widget(form.mayoresHombre)}}
+                        {{form_errors(form.mayoresHombre)}}
+                  </div>
+                  <div class="col-6">
+                        {{form_label(form.mayoresMujer,'Mayores Mujer')}}
+                        {{form_widget(form.mayoresMujer)}}
+                        {{form_errors(form.mayoresMujer)}}
+                  </div>
+            </div>
+            {{form_end(form)}}
       </div>
 {% endblock %}
