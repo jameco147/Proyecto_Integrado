@@ -38,7 +38,7 @@ class DefaultController extends Controller
             }
             return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos));
         } else if($tipo == 3){
-            $proyectos = $proyectoRepository->findByTipoProyecto('EDUCACIÓN PARA LA CUIDADANÍA Y EL DESARROLLO GLOBAL');
+            $proyectos = $proyectoRepository->findByTipoProyecto('EDUCACIÓN PARA LA CUIDADANÍA');
             if ($this->redirectAction($proyectos)){
                 return $this->redirectToRoute('menu');
             }

@@ -29,7 +29,7 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                     <th scope="col"></th>
+                                     <th scope="col">Opciones</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">First</th>
                                     <th scope="col">Last</th>
@@ -39,8 +39,10 @@
                             <tbody>
                                 {% for proyecto in proyectos %}
                                     <tr>
-                                    <td>
-                                      <a href="{{(path('homepage',{'estado': "null", 'proy':proyecto.id}))}}">Editar</a></td>
+                                        <td>
+                                            <a href="{{(path('homepage',{'estado': "null", 'proy':proyecto.id}))}}"><i class="fas fa-edit icono"></i></a>
+                                            <a href="{{(path('homepage',{'estado': "delete", 'proy':proyecto.id}))}}"><i class="fas fa-trash-alt icono"></i></a>
+                                        </td>
                                         <td>
                                             {{ proyecto.nombre }}</td>
                                         <td>

@@ -62,6 +62,9 @@ class ProjectoController extends Controller
         elseif ($estado=='poblacionVulnerable') {
             return $this->poblacionVulnerableAction($request, $proy);
         }
+        elseif ($estado=='delete') {
+            return $this->deleteAction($proy);
+        }
         elseif ($estado == 'finalizar')
         {
             return $this->finalizarAction($proy);
@@ -384,6 +387,21 @@ class ProjectoController extends Controller
        return $this->redirectToRoute('homepage');
 
     }
+
+
+    public function deleteAction($proy)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        $repository = $this->getDoctrine()->getRepository(Projecto::class);
+        $pro = $repository->findById($proy);
+
+
+       $entityManager->remove($pro[0]);
+       $entityManager->flush();
+
+       return $this->redirectToRoute('seleccionProyecto');
+    }
+
 
 
 }

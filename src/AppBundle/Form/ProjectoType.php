@@ -21,7 +21,7 @@ class ProjectoType extends AbstractType
             'choices' => [
                 'E-INCLUSION' => 'E-INCLUSION',
                 'INNOVACIÓN SOCIAL Y EMPRENDIMIENTO SOCIAL' => 'INNOVACIÓN SOCIAL Y EMPRENDIMIENTO SOCIAL',
-                'EDUCACIÓN PARA LA CIUDADANÍA Y EL DESARROLLO GLOBAL' => 'EDUCACIÓN PARA LA CIUDADANÍA Y EL DESARROLLO GLOBAL',
+                'EDUCACIÓN PARA LA CUIDADANÍA' => 'EDUCACIÓN PARA LA CUIDADANÍA',
                 'COOPERACIÓN PARA EL DESARROLLO' => 'COOPERACIÓN PARA EL DESARROLLO',
             ],
         ])
