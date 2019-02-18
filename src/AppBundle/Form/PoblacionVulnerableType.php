@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 
 class PoblacionVulnerableType extends AbstractType
 {
@@ -14,8 +15,8 @@ class PoblacionVulnerableType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('exclusionSocial')->add('mayores')->add('mujeres')->add('ninyos')
-        ->add('jovenes')->add('migrantes')->add('otros')
+        $builder->add('exclusionSocial')->add('mayores')->add('mujeres')->add('ninyos',CheckboxType::class,array('label'=>'Niños'))
+        ->add('jovenes',CheckboxType::class,array('label'=>'Jóvenes'))->add('migrantes')->add('otros')
         ->add('salvar',SubmitType::class,array('label'=>"Guardar"));
     }/**
      * {@inheritdoc}
