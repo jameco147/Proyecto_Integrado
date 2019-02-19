@@ -62,8 +62,7 @@ class ProjectoController extends Controller
             return $this->deleteAction($proy);
         } elseif ($estado == 'finalizar') {
             return $this->finalizarAction($proy);
-        } 
-        else {
+        } else {
             return $this->redirectToRoute('homepage');
         }
     }
@@ -150,12 +149,43 @@ class ProjectoController extends Controller
             $form = $this->createForm(PagoType::class, $pago);
         } else {
             $pago= $proye[0]->getProgPago();
-            dump($pago);
             $form = $this->createForm(PagoType::class, $pago[0]->getIdPago());
             $edit = true;
         }
         
         $form->handleRequest($request);
+
+        if ($form->isSubmitted() &&  $form->get('anyadir')->isClicked()) {
+            $entityManager = $this->getDoctrine()->getManager();
+
+            $pago = new Pago();
+            $form = $this->createForm(PagoType::class, $pago);
+            $prog_pago = new Prog_Pago();
+
+            $form->handleRequest($request);
+
+
+            $entityManager->persist($pago);
+            $entityManager->persist($prog_pago);
+
+
+            $repository = $this->getDoctrine()->getRepository(Projecto::class);
+
+            $pro = $repository->findById($proy);
+
+            $pro[0]->addProgPago($prog_pago);
+
+            $prog_pago->setIdProjecto($pro[0]);
+            $prog_pago->setIdPago($pago);
+            $entityManager->persist($pago);
+            //$entityManager->persist( $proye[0]->getProg());
+            
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute('homepage', array('estado'=>'pago', 'proy'=>$proy));
+        }
+         
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -184,6 +214,7 @@ class ProjectoController extends Controller
 
             return $this->redirectToRoute('homepage', array('estado'=>'impactoSocial', 'proy'=>$proy));
         }
+
         return $this->render('default/addPago.html.twig', array('form'=>$form->createView(), 'proy'=>$proy));
     }
 
@@ -231,8 +262,7 @@ class ProjectoController extends Controller
         if ($proye[0]->getTipoAdministracion() === null) {
             $tipoAdmi= new TipoAdministracion();
             $form = $this->createForm(TipoAdministracionType::class, $tipoAdmi);
-        }
-        else {
+        } else {
             $repository = $this->getDoctrine()->getRepository(TipoAdministracion::class);
             $tipoAdmi= $proye[0]->getTipoAdministracion();
             $form = $this->createForm(TipoAdministracionType::class, $tipoAdmi);
@@ -266,8 +296,7 @@ class ProjectoController extends Controller
 
         if ($proye[0]->getTipoFinanciacion() === null) {
             $tipoFinan= new TipoFinanciacion();
-        }
-        else {
+        } else {
             $repository = $this->getDoctrine()->getRepository(TipoAdministracion::class);
             $tipoFinan= $proye[0]->getTipoFinanciacion();
             $edit = true;
@@ -300,8 +329,7 @@ class ProjectoController extends Controller
 
         if ($proye[0]->getPlanEstrategico() === null) {
             $planEstr= new PlanEstrategico();
-        }
-        else {
+        } else {
             $repository = $this->getDoctrine()->getRepository(PlanEstrategico::class);
             $planEstr= $proye[0]->getPlanEstrategico();
             $edit = true;
@@ -334,8 +362,7 @@ class ProjectoController extends Controller
 
         if ($proye[0]->getEstado() === null) {
             $estado= new Estado();
-        }
-        else {
+        } else {
             $repository = $this->getDoctrine()->getRepository(Estado::class);
             $estado= $proye[0]->getEstado();
             $edit = true;
@@ -369,8 +396,7 @@ class ProjectoController extends Controller
 
         if ($proye[0]->getPoblaVulnerable() === null) {
             $pob_vul= new PoblacionVulnerable();
-        }
-        else {
+        } else {
             $repository = $this->getDoctrine()->getRepository(PoblacionVulnerable::class);
             $pob_vul= $proye[0]->getPoblaVulnerable();
             $edit = true;

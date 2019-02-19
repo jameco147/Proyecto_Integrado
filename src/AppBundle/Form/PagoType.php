@@ -17,6 +17,8 @@ class PagoType extends AbstractType
         $builder->add('fechaEstimada')->add('fechaPago')->add('cantidad');
         $builder
         ->add('salvar',SubmitType::class,array('label'=>"Guardar"));
+        $builder
+        ->add('anyadir',SubmitType::class,array('label'=>"Añadir"));
     }/**
      * {@inheritdoc}
      */
