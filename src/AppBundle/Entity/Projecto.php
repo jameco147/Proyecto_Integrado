@@ -32,14 +32,14 @@ class Projecto
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_inter", type="string", length=255)
+     * @ORM\Column(name="codigo_inter", type="string", length=255,  nullable=true)
      */
     private $codigoInter;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="codigo_contable", type="string", length=255)
+     * @ORM\Column(name="codigo_contable", type="string", length=255,  nullable=true)
      */
     private $codigoContable;
 
@@ -52,7 +52,7 @@ class Projecto
     /**
      * @var string
      *
-     * @ORM\Column(name="publico_privada", type="string", length=255)
+     * @ORM\Column(name="publico_privada", type="string", length=255,  nullable=true)
      */
     private $publicoPrivada;
 
@@ -102,126 +102,126 @@ class Projecto
     /**
      * @var bool
      *
-     * @ORM\Column(name="proyecto_en_red", type="boolean")
+     * @ORM\Column(name="proyecto_en_red", type="boolean", options={"default":"0"} )
      */
     private $proyectoEnRed;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="entidad_lider", type="string", length=255)
+     * @ORM\Column(name="entidad_lider", type="string", length=255,  nullable=true)
      */
     private $entidadLider;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="entidades_sociales", type="string", length=255)
+     * @ORM\Column(name="entidades_sociales", type="string", length=255,  nullable=true)
      */
     private $entidadesSociales;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="financiador", type="string", length=255)
+     * @ORM\Column(name="financiador", type="string", length=255,  nullable=true)
      */
     private $financiador;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="contacto_administ", type="string", length=255)
+     * @ORM\Column(name="contacto_administ", type="string", length=255,  nullable=true)
      */
     private $contactoAdminist;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="link_convacatoria", type="string", length=255)
+     * @ORM\Column(name="link_convacatoria", type="string", length=255,  nullable=true)
      */
     private $linkConvacatoria;
 
     /**
     * @var float
     *
-    * @ORM\Column(name="importe_solicitado", type="float")
+    * @ORM\Column(name="importe_solicitado", type="float",  nullable=true)
     */
     private $importeSolicitado;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="importe_concedido", type="float")
+     * @ORM\Column(name="importe_concedido", type="float",  nullable=true)
      */
     private $importeConcedido;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_estimada_resolucion", type="date")
+     * @ORM\Column(name="fecha_estimada_resolucion", type="date",  nullable=true)
      */
     private $fechaEstimadaResolucion;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_resolucion", type="date")
+     * @ORM\Column(name="fecha_resolucion", type="date",  nullable=true)
      */
     private $fechaResolucion;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_ini_ejecucion", type="date")
+     * @ORM\Column(name="fecha_ini_ejecucion", type="date",  nullable=true)
      */
     private $fechaIniEjecucion;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_fin_ejecucion", type="date")
+     * @ORM\Column(name="fecha_fin_ejecucion", type="date",  nullable=true)
      */
     private $fechaFinEjecucion;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="duracion_meses", type="integer")
+     * @ORM\Column(name="duracion_meses", type="integer",  nullable=true)
      */
     private $duracionMeses;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_justificacion_1", type="date")
+     * @ORM\Column(name="fecha_justificacion_1", type="date",  nullable=true)
      */
     private $fechaJustificacion1;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_justificacion_2", type="date")
+     * @ORM\Column(name="fecha_justificacion_2", type="date",  nullable=true)
      */
     private $fechaJustificacion2;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_requi_1", type="date")
+     * @ORM\Column(name="fecha_requi_1", type="date",  nullable=true)
      */
     private $fechaRequi1;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fecha_requi_2", type="date")
+     * @ORM\Column(name="fecha_requi_2", type="date",  nullable=true)
      */
     private $fechaRequi2;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="periodoEjecucion", type="string", length=255)
+     * @ORM\Column(name="periodoEjecucion", type="string", length=255,  nullable=true)
      */
     private $periodoEjecucion;
 
@@ -229,7 +229,7 @@ class Projecto
     /**
      * @var string
      *
-     * @ORM\Column(name="observaciones", type="string", length=255)
+     * @ORM\Column(name="observaciones", type="string", length=255,  nullable=true)
      */
     private $observaciones;
 
@@ -260,28 +260,28 @@ class Projecto
     /**
      * @var string
      *
-     * @ORM\Column(name="codigoAdministracion", type="string", length=255)
+     * @ORM\Column(name="codigoAdministracion", type="string", length=255,  nullable=true)
      */
     private $codigoAdministracion;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tecnicoConvocatoria", type="string", length=255)
+     * @ORM\Column(name="tecnicoConvocatoria", type="string", length=255,  nullable=true)
      */
     private $tecnicoConvocatoria;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="resumen", type="string", length=255)
+     * @ORM\Column(name="resumen", type="string", length=255,  nullable=true)
      */
     private $resumen;
 
      /**
      * @var string
      *
-     * @ORM\Column(name="actEmblematicas", type="string", length=255)
+     * @ORM\Column(name="actEmblematicas", type="string", length=255,  nullable=true)
      */
     private $actEmblematicas;
 
@@ -289,14 +289,14 @@ class Projecto
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechaLimiteEntrega", type="date")
+     * @ORM\Column(name="fechaLimiteEntrega", type="date",  nullable=true)
      */
     private $fechaLimiteEntrega;
 
     /**
      * @var float
      *
-     * @ORM\Column(name="pendienteCobro", type="float")
+     * @ORM\Column(name="pendienteCobro", type="float",  nullable=true)
      */
     private $pendienteCobro;
 
