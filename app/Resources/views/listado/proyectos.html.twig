@@ -288,9 +288,14 @@
                                 <tr>
                                     <th scope="col">Importe Condedido</th>
                                         <th scope="col">Pendiente Cobro</th>
+                                {% for proyecto  in proyectos %}
+                                   {% for _proyecto  in proyecto.progPago %}
                                         <th scope="col">Fecha Estimada</th>
                                         <th scope="col">Cantidad</th>
                                         <th scope="col">Fecha Pago</th>
+                                     {% endfor %}
+                                {% endfor %}
+
                                 </tr>
                             </thead>
                             <tbody>

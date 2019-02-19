@@ -165,7 +165,6 @@ class ProjectoController extends Controller
 
             $form->handleRequest($request);
 
-
             $entityManager->persist($pago);
             $entityManager->persist($prog_pago);
 
