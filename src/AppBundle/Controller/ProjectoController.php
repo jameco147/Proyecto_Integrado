@@ -62,7 +62,8 @@ class ProjectoController extends Controller
             return $this->deleteAction($proy);
         } elseif ($estado == 'finalizar') {
             return $this->finalizarAction($proy);
-        } else {
+        } 
+        else {
             return $this->redirectToRoute('homepage');
         }
     }
@@ -142,14 +143,14 @@ class ProjectoController extends Controller
         $edit = false;
         $repository = $this->getDoctrine()->getRepository(Projecto::class);
         $proye = $repository->findById($proy);
+       
 
         if ($proye[0]->getProgPago() === null) {
             $pago = new Pago();
             $form = $this->createForm(PagoType::class, $pago);
         } else {
-            $repository = $this->getDoctrine()->getRepository(Projecto::class);
             $pago= $proye[0]->getProgPago();
-
+            dump($pago);
             $form = $this->createForm(PagoType::class, $pago[0]->getIdPago());
             $edit = true;
         }
@@ -427,17 +428,19 @@ class ProjectoController extends Controller
         $repository = $this->getDoctrine()->getRepository(Projecto::class);
         $pro = $repository->findById($proy);
 
+        dump($pro);
+        
         if ($pro[0]->getBeneficiaria() === null) {
             $bene = new Beneficiarias();
             $entityManager->persist($bene);
             $pro[0]->setBeneficiaria($bene);
         }
         if (count($pro[0]->getProgPago())=== 0) {
-            $pago = new Pago();
             $prog_pago = new Prog_Pago();
-
-            $entityManager->persist($pago);
+            $pago = new Pago();
+            
             $entityManager->persist($prog_pago);
+            $entityManager->persist($pago);
 
             $pro[0]->addProgPago($prog_pago);
 
@@ -483,7 +486,7 @@ class ProjectoController extends Controller
 
 
         $entityManager->flush();
-        return $this->redirectToRoute('homepage');
+        return $this->redirectToRoute('menu');
     }
 
 
