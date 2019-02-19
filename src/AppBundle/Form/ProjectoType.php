@@ -9,6 +9,8 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+
 
 class ProjectoType extends AbstractType
 {
@@ -40,10 +42,46 @@ class ProjectoType extends AbstractType
             ])
             ->add('entidadLider')->add('entidadesSociales')
         ->add('financiador')->add('contactoAdminist')->add('linkConvacatoria')
-        ->add('importeSolicitado')->add('importeConcedido')->add('fechaEstimadaResolucion')
-        ->add('fechaResolucion')->add('fechaIniEjecucion')->add('fechaFinEjecucion')
-        ->add('duracionMeses')->add('fechaJustificacion1')->add('fechaJustificacion2')
-        ->add('fechaRequi1')->add('fechaRequi2')->add('fechaLimiteEntrega')->add('periodoEjecucion')
+        ->add('importeSolicitado')->add('importeConcedido')
+
+        ->add('fechaEstimadaResolucion', DateType::class, [
+            'widget' => 'single_text'
+        ])
+        
+        ->add('fechaResolucion', DateType::class, [
+            'widget' => 'single_text'
+        ])
+            
+        ->add('fechaIniEjecucion', DateType::class, [
+            'widget' => 'single_text'
+        ])
+        ->add('fechaFinEjecucion', DateType::class, [
+            'widget' => 'single_text'
+        ])
+
+        ->add('duracionMeses', DateType::class, [
+            'widget' => 'single_text'
+        ])
+        ->add('fechaJustificacion1', DateType::class, [
+            'widget' => 'single_text'
+        ])
+        ->add('fechaJustificacion2', DateType::class, [
+            'widget' => 'single_text'
+        ])
+        ->add('fechaRequi1', DateType::class, [
+            'widget' => 'single_text'
+        ])
+        ->add('fechaRequi2', DateType::class, [
+            'widget' => 'single_text'
+        ])
+        ->add('fechaLimiteEntrega', DateType::class, [
+            'widget' => 'single_text'
+        ])
+
+       
+
+        ->add('duracionMeses')
+        ->add('periodoEjecucion')
         ->add('observaciones')->add('pendienteCobro')->add('resumen', TextareaType::class, [
             'attr' => ['class' => 'tinymce'],
         ])->add('actEmblematicas', TextareaType::class, [
