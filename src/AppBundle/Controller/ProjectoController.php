@@ -114,6 +114,7 @@ class ProjectoController extends Controller
             $form = $this->createForm(BeneficiariasType::class, $bene);
             $edit = true;
         }
+               
        
         $form->handleRequest($request);
 
@@ -153,7 +154,7 @@ class ProjectoController extends Controller
             $form = $this->createForm(PagoType::class, $pago[0]->getIdPago());
             $edit = true;
         }
-        
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -217,7 +218,7 @@ class ProjectoController extends Controller
 
             return $this->redirectToRoute('homepage', array('estado'=>'tipoAdministracion', 'proy'=>$proy));
         }
-        return $this->render('default/addImpactoSocial.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addImpactoSocial.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
 
    
@@ -238,7 +239,7 @@ class ProjectoController extends Controller
             $edit = true;
         }
 
-       
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -254,7 +255,7 @@ class ProjectoController extends Controller
 
             return $this->redirectToRoute('homepage', array('estado'=>'tipoFinanciacion', 'proy'=>$proy));
         }
-        return $this->render('default/addTipoAdministracion.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addTipoAdministracion.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
 
     private function tipoFinanciaAction($request, $proy)
@@ -288,7 +289,7 @@ class ProjectoController extends Controller
 
             return $this->redirectToRoute('homepage', array('estado'=>'planEstrategico', 'proy'=>$proy));
         }
-        return $this->render('default/addTipoFinanciacion.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addTipoFinanciacion.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
 
     private function planEstrategicoAction($request, $proy)
@@ -322,7 +323,7 @@ class ProjectoController extends Controller
   
             return $this->redirectToRoute('homepage', array('estado'=>'estado', 'proy'=>$proy));
         }
-        return $this->render('default/addPlanEstrategico.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addPlanEstrategico.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
 
     private function estadoAction($request, $proy)
@@ -356,7 +357,7 @@ class ProjectoController extends Controller
 
             return $this->redirectToRoute('homepage', array('estado'=>'poblacionVulnerable', 'proy'=>$proy));
         }
-        return $this->render('default/addEstado.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addEstado.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
 
 
@@ -391,7 +392,7 @@ class ProjectoController extends Controller
 
             return $this->redirectToRoute('menu');
         }
-        return $this->render('default/addPoblacionVulnerable.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addPoblacionVulnerable.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
 
     /*
@@ -487,7 +488,11 @@ class ProjectoController extends Controller
     }
 
 
-    public function deleteAction($proy)
+
+    /**
+     * @Route("borrarProyecto/{proy}/{tipo}", name="borrarProyecto")
+     */
+    public function deleteAction($proy,$tipo)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository(Projecto::class);
@@ -497,6 +502,9 @@ class ProjectoController extends Controller
         $entityManager->remove($pro[0]);
         $entityManager->flush();
 
-        return $this->redirectToRoute('seleccionProyecto');
+        return $this->redirectToRoute('listadoProyectos',array('tipo' => $tipo));
     }
+
+
+
 }
