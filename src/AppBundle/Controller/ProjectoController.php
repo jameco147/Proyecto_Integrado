@@ -195,7 +195,7 @@ class ProjectoController extends Controller
 
             return $this->redirectToRoute('homepage', array('estado'=>'tipoAdministracion', 'proy'=>$proy));
         }
-        return $this->render('default/addImpactoSocial.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addImpactoSocial.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
 
    
@@ -218,7 +218,7 @@ class ProjectoController extends Controller
 
             return $this->redirectToRoute('homepage', array('estado'=>'tipoFinanciacion', 'proy'=>$proy));
         }
-        return $this->render('default/addTipoAdministracion.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addTipoAdministracion.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
 
     private function tipoFinanciaAction($request, $proy)
@@ -240,7 +240,7 @@ class ProjectoController extends Controller
 
             return $this->redirectToRoute('homepage', array('estado'=>'planEstrategico', 'proy'=>$proy));
         }
-        return $this->render('default/addTipoFinanciacion.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addTipoFinanciacion.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
 
     private function planEstrategicoAction($request, $proy)
@@ -262,7 +262,7 @@ class ProjectoController extends Controller
   
             return $this->redirectToRoute('homepage', array('estado'=>'estado', 'proy'=>$proy));
         }
-        return $this->render('default/addPlanEstrategico.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addPlanEstrategico.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
 
     private function estadoAction($request, $proy)
@@ -284,7 +284,7 @@ class ProjectoController extends Controller
 
             return $this->redirectToRoute('homepage', array('estado'=>'poblacionVulnerable', 'proy'=>$proy));
         }
-        return $this->render('default/addEstado.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addEstado.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
 
 
@@ -307,7 +307,7 @@ class ProjectoController extends Controller
 
             return $this->redirectToRoute('menu');
         }
-        return $this->render('default/addPoblacionVulnerable.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addPoblacionVulnerable.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
 
     /*
