@@ -403,7 +403,11 @@ class ProjectoController extends Controller
     }
 
 
-    public function deleteAction($proy)
+
+    /**
+     * @Route("borrarProyecto/{proy}/{tipo}", name="borrarProyecto")
+     */
+    public function deleteAction($proy,$tipo)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository(Projecto::class);
@@ -413,7 +417,7 @@ class ProjectoController extends Controller
        $entityManager->remove($pro[0]);
        $entityManager->flush();
 
-       return $this->redirectToRoute('seleccionProyecto');
+       return $this->redirectToRoute('listadoProyectos',array('tipo' => $tipo));
     }
 
 
