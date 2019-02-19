@@ -40,8 +40,6 @@ class ProjectoController extends Controller
      */
     public function indexAction(Request $request, $estado=null, $proy=null)
     {
-        dump($estado);
-
         if ($estado==null || $estado=="null") {
             return $this->projectoAction($request, $proy);
         } elseif ($estado=='beneficiarias') {
@@ -60,12 +58,9 @@ class ProjectoController extends Controller
             return $this->estadoAction($request, $proy);
         } elseif ($estado=='poblacionVulnerable') {
             return $this->poblacionVulnerableAction($request, $proy);
-        }
-        elseif ($estado=='delete') {
+        } elseif ($estado=='delete') {
             return $this->deleteAction($proy);
-        }
-        elseif ($estado == 'finalizar')
-        {
+        } elseif ($estado == 'finalizar') {
             return $this->finalizarAction($proy);
         } else {
             return $this->redirectToRoute('homepage');
@@ -116,10 +111,9 @@ class ProjectoController extends Controller
             $form = $this->createForm(BeneficiariasType::class, $bene);
         } else {
             $bene = $proye[0]->getBeneficiaria();
-            $form = $this->createForm(BeneficiariasType::class, $proye[0]->getBeneficiaria());
+            $form = $this->createForm(BeneficiariasType::class, $bene);
             $edit = true;
         }
-               
        
         $form->handleRequest($request);
 
@@ -134,12 +128,10 @@ class ProjectoController extends Controller
                 $pro[0]->setBeneficiaria($bene);
             } else {
                 $entityManager->persist($bene);
-
             }
    
             $entityManager->flush();
             return $this->redirectToRoute('homepage', array('estado'=>'pago', 'proy'=>$proy));
-           
         }
         return $this->render('default/addBeneficiarias.html.twig', array('form'=>$form->createView(), 'proy'=>$proy));
     }
@@ -147,26 +139,45 @@ class ProjectoController extends Controller
 
     private function pagoAction($request, $proy)
     {
-        $pago = new Pago();
-        $form = $this->createForm(PagoType::class, $pago);
+        $edit = false;
+        $repository = $this->getDoctrine()->getRepository(Projecto::class);
+        $proye = $repository->findById($proy);
+
+        if ($proye[0]->getProgPago() === null) {
+            $pago = new Pago();
+            $form = $this->createForm(PagoType::class, $pago);
+        } else {
+            $repository = $this->getDoctrine()->getRepository(Projecto::class);
+            $pago= $proye[0]->getProgPago();
+
+            $form = $this->createForm(PagoType::class, $pago[0]->getIdPago());
+            $edit = true;
+        }
+        
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $prog_pago = new Prog_Pago();
-
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($pago);
-            $entityManager->persist($prog_pago);
+
+            if ($edit === false) {
+                $prog_pago = new Prog_Pago();
+
+                $entityManager->persist($pago);
+                $entityManager->persist($prog_pago);
 
 
-            $repository = $this->getDoctrine()->getRepository(Projecto::class);
+                $repository = $this->getDoctrine()->getRepository(Projecto::class);
 
-            $pro = $repository->findById($proy);
+                $pro = $repository->findById($proy);
 
-            $pro[0]->addProgPago($prog_pago);
+                $pro[0]->addProgPago($prog_pago);
 
-            $prog_pago->setIdProjecto($pro[0]);
-            $prog_pago->setIdPago($pago);
+                $prog_pago->setIdProjecto($pro[0]);
+                $prog_pago->setIdPago($pago);
+            } else {
+                $entityManager->persist($pago[0]);
+                //$entityManager->persist( $proye[0]->getProg());
+            }
 
             $entityManager->flush();
 
@@ -178,8 +189,20 @@ class ProjectoController extends Controller
 
     private function impactoSocialAction($request, $proy)
     {
-        $impacto = new ImpactoSocial();
-        $form = $this->createForm(ImpactoSocialType::class, $impacto);
+        $edit = false;
+        $repository = $this->getDoctrine()->getRepository(Projecto::class);
+        $proye = $repository->findById($proy);
+
+        if ($proye[0]->getImpactoSocial() === null) {
+            $impacto = new ImpactoSocial();
+            $form = $this->createForm(ImpactoSocialType::class, $pago);
+        } else {
+            $repository = $this->getDoctrine()->getRepository(ImpactoSocial::class);
+            $impacto= $proye[0]->getImpactoSocial();
+            $form = $this->createForm(ImpactoSocialType::class, $impacto);
+            $edit = true;
+        }
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -187,10 +210,9 @@ class ProjectoController extends Controller
             $entityManager->persist($impacto);
 
             $repository = $this->getDoctrine()->getRepository(Projecto::class);
-            $pro = $repository->findById($proy);
 
             $entityManager->flush();
-            $pro[0]->setImpactoSocial($impacto);
+            $proye[0]->setImpactoSocial($impacto);
             $entityManager->flush();
 
             return $this->redirectToRoute('homepage', array('estado'=>'tipoAdministracion', 'proy'=>$proy));
@@ -201,8 +223,22 @@ class ProjectoController extends Controller
    
     private function tipoAdminstraAction($request, $proy)
     {
-        $tipoAdmi= new TipoAdministracion();
-        $form = $this->createForm(TipoAdministracionType::class, $tipoAdmi);
+        $edit = false;
+        $repository = $this->getDoctrine()->getRepository(Projecto::class);
+        $proye = $repository->findById($proy);
+
+        if ($proye[0]->getTipoAdministracion() === null) {
+            $tipoAdmi= new TipoAdministracion();
+            $form = $this->createForm(TipoAdministracionType::class, $tipoAdmi);
+        }
+        else {
+            $repository = $this->getDoctrine()->getRepository(TipoAdministracion::class);
+            $tipoAdmi= $proye[0]->getTipoAdministracion();
+            $form = $this->createForm(TipoAdministracionType::class, $tipoAdmi);
+            $edit = true;
+        }
+
+       
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -223,7 +259,19 @@ class ProjectoController extends Controller
 
     private function tipoFinanciaAction($request, $proy)
     {
-        $tipoFinan= new TipoFinanciacion();
+        $edit = false;
+        $repository = $this->getDoctrine()->getRepository(Projecto::class);
+        $proye = $repository->findById($proy);
+
+        if ($proye[0]->getTipoFinanciacion() === null) {
+            $tipoFinan= new TipoFinanciacion();
+        }
+        else {
+            $repository = $this->getDoctrine()->getRepository(TipoAdministracion::class);
+            $tipoFinan= $proye[0]->getTipoFinanciacion();
+            $edit = true;
+        }
+
         $form = $this->createForm(TipoFinanciacionType::class, $tipoFinan);
         $form->handleRequest($request);
 
@@ -245,7 +293,19 @@ class ProjectoController extends Controller
 
     private function planEstrategicoAction($request, $proy)
     {
-        $planEstr= new PlanEstrategico();
+        $edit = false;
+        $repository = $this->getDoctrine()->getRepository(Projecto::class);
+        $proye = $repository->findById($proy);
+
+        if ($proye[0]->getPlanEstrategico() === null) {
+            $planEstr= new PlanEstrategico();
+        }
+        else {
+            $repository = $this->getDoctrine()->getRepository(PlanEstrategico::class);
+            $planEstr= $proye[0]->getPlanEstrategico();
+            $edit = true;
+        }
+
         $form = $this->createForm(PlanEstrategicoType::class, $planEstr);
         $form->handleRequest($request);
   
@@ -267,7 +327,19 @@ class ProjectoController extends Controller
 
     private function estadoAction($request, $proy)
     {
-        $estado= new Estado();
+        $edit = false;
+        $repository = $this->getDoctrine()->getRepository(Projecto::class);
+        $proye = $repository->findById($proy);
+
+        if ($proye[0]->getEstado() === null) {
+            $estado= new Estado();
+        }
+        else {
+            $repository = $this->getDoctrine()->getRepository(Estado::class);
+            $estado= $proye[0]->getEstado();
+            $edit = true;
+        }
+
         $form = $this->createForm(EstadoType::class, $estado);
         $form->handleRequest($request);
 
@@ -290,7 +362,19 @@ class ProjectoController extends Controller
 
     private function poblacionVulnerableAction($request, $proy)
     {
-        $pob_vul= new PoblacionVulnerable();
+        $edit = false;
+        $repository = $this->getDoctrine()->getRepository(Projecto::class);
+        $proye = $repository->findById($proy);
+
+        if ($proye[0]->getPoblaVulnerable() === null) {
+            $pob_vul= new PoblacionVulnerable();
+        }
+        else {
+            $repository = $this->getDoctrine()->getRepository(PoblacionVulnerable::class);
+            $pob_vul= $proye[0]->getPoblaVulnerable();
+            $edit = true;
+        }
+
         $form = $this->createForm(PoblacionVulnerableType::class, $pob_vul);
         $form->handleRequest($request);
 
@@ -410,12 +494,9 @@ class ProjectoController extends Controller
         $pro = $repository->findById($proy);
 
 
-       $entityManager->remove($pro[0]);
-       $entityManager->flush();
+        $entityManager->remove($pro[0]);
+        $entityManager->flush();
 
-       return $this->redirectToRoute('seleccionProyecto');
+        return $this->redirectToRoute('seleccionProyecto');
     }
-
-
-
 }
