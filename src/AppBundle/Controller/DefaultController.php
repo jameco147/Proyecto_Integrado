@@ -30,25 +30,25 @@ class DefaultController extends Controller
             if ($this->redirectAction($proyectos)){
                 return $this->redirectToRoute('menu');
             }
-            return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos));
+            return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos, 'tipo' => $tipo));
         } else if($tipo == 2){
             $proyectos = $proyectoRepository->findByTipoProyecto('INNOVACIÓN SOCIAL Y EMPRENDIMIENTO SOCIAL');
             if ($this->redirectAction($proyectos)){
                 return $this->redirectToRoute('menu');
             }
-            return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos));
+            return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos, 'tipo' => $tipo));
         } else if($tipo == 3){
             $proyectos = $proyectoRepository->findByTipoProyecto('EDUCACIÓN PARA LA CUIDADANÍA');
             if ($this->redirectAction($proyectos)){
                 return $this->redirectToRoute('menu');
             }
-            return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos));
+            return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos, 'tipo' => $tipo));
         } else if($tipo == 4){
             $proyectos = $proyectoRepository->findByTipoProyecto('COOPERACIÓN PARA EL DESARROLLO');
             if ($this->redirectAction($proyectos)){
                 return $this->redirectToRoute('menu');
             }
-            return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos));
+            return $this->render('listado/proyectos.html.twig', array('proyectos' => $proyectos, 'tipo' => $tipo));
         }
 
     }
