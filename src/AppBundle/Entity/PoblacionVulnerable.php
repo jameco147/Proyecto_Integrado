@@ -24,49 +24,49 @@ class PoblacionVulnerable
     /**
      * @var bool
      *
-     * @ORM\Column(name="exclusionSocial", type="boolean",  nullable=true)
+     * @ORM\Column(name="exclusionSocial", type="boolean", options={"default":"0"})
      */
     private $exclusionSocial;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="mayores", type="boolean",  nullable=true)
+     * @ORM\Column(name="mayores", type="boolean",  options={"default":"0"})
      */
     private $mayores;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="mujeres", type="boolean",  nullable=true)
+     * @ORM\Column(name="mujeres", type="boolean",  options={"default":"0"})
      */
     private $mujeres;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="ninyos", type="boolean",  nullable=true)
+     * @ORM\Column(name="ninyos", type="boolean",  options={"default":"0"})
      */
     private $ninyos;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="jovenes", type="boolean",  nullable=true)
+     * @ORM\Column(name="jovenes", type="boolean", options={"default":"0"})
      */
     private $jovenes;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="migrantes", type="boolean",  nullable=true)
+     * @ORM\Column(name="migrantes", type="boolean",  options={"default":"0"})
      */
     private $migrantes;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="otros", type="boolean",  nullable=true)
+     * @ORM\Column(name="otros", type="boolean", options={"default":"0"})
      */
     private $otros;
 
