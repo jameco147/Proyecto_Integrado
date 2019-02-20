@@ -146,8 +146,9 @@ class ProjectoController extends Controller
         $repository = $this->getDoctrine()->getRepository(Projecto::class);
         $proye = $repository->findById($proy);
        
+        $test=$proye[0]->getProgPago();
 
-        if ($proye[0]->getProgPago() === null) {
+        if ($test[0] === null) {
             $pago = new Pago();
             $form = $this->createForm(PagoType::class, $pago);
         } else {
@@ -206,7 +207,6 @@ class ProjectoController extends Controller
                 $prog_pago->setIdPago($pago);
             } else {
                 $entityManager->persist($pago[0]);
-                //$entityManager->persist( $proye[0]->getProg());
             }
 
             $entityManager->flush();
@@ -226,7 +226,7 @@ class ProjectoController extends Controller
 
         if ($proye[0]->getImpactoSocial() === null) {
             $impacto = new ImpactoSocial();
-            $form = $this->createForm(ImpactoSocialType::class, $pago);
+            $form = $this->createForm(ImpactoSocialType::class, $impacto);
         } else {
             $repository = $this->getDoctrine()->getRepository(ImpactoSocial::class);
             $impacto= $proye[0]->getImpactoSocial();
