@@ -18,6 +18,15 @@ body{
 
 }
 
+.tituloPrincipal {
+    font-weight: 300;
+    font-size: 3rem;
+    letter-spacing: 12px;
+}
+
+.color {
+    color: #d21e45;
+}
 /*--- SELECCIÓN PROYECTO ---*/
 
 .seleccion {
