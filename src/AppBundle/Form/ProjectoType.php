@@ -94,7 +94,7 @@ class ProjectoType extends AbstractType
         
        // $builder->add('beneficiaria');
 
-        $builder->add('salvar',SubmitType::class,array('label'=>"Nuevo Proyecto"));
+        $builder->add('salvar',SubmitType::class,array('label'=>"Guardar Proyecto"));
 
 
     }/**
