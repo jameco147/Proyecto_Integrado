@@ -18,7 +18,7 @@ class BeneficiariasType extends AbstractType
         ->add('juventudMujer')->add('adultosHombre')->add('adultosMujer')->add('mayoresHombre')
         ->add('mayoresMujer');
         $builder
-        ->add('salvar',SubmitType::class,array('label'=>"Nueva Beneficiaria"));
+        ->add('salvar',SubmitType::class,array('label'=>"Guardar"));
     }/**
      * {@inheritdoc}
      */
