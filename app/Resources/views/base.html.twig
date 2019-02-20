@@ -15,12 +15,13 @@
 <body>
 
 <!-- Esto es el Header -->
-<div class="container">
+<div class="container mb-3 principal">
     <nav class="navbar navbar-expand-sm navbar-light">
-        <a class="navbar-brand" href="#"><img class="img-fluid logoCabecera" src="{{ asset('images/jovesolides.logo.png') }}" alt=""></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <a class="navbar-brand" href={{ path('menu') }}><img class="img-fluid logoCabecera" src="{{ asset('images/jovesolides.logo.png') }}" alt=""></a>
+        <h1 class="tituloPrincipal offset-2">Gestión de Proyectos</h1>
+        <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-        </button>
+        </button>-->
         <!--<div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -35,6 +36,7 @@
             </ul>
         </div>-->
     </nav>
+    <hr class="color">
 </div>
 
 
