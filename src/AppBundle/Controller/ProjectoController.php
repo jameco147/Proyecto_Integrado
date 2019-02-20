@@ -44,6 +44,8 @@ class ProjectoController extends Controller
             return $this->projectoAction($request, $proy);
         } elseif ($estado=='beneficiarias') {
             return $this->beneficiariasAction($request, $proy);
+        } elseif ($estado == 'equipo') {
+            return $this->equipoAction($request, $proy);
         } elseif ($estado=='pago') {
             return $this->pagoAction($request, $proy);
         } elseif ($estado=='impactoSocial') {
@@ -168,7 +170,6 @@ class ProjectoController extends Controller
             $entityManager->persist($pago);
             $entityManager->persist($prog_pago);
 
-
             $repository = $this->getDoctrine()->getRepository(Projecto::class);
 
             $pro = $repository->findById($proy);
@@ -179,8 +180,6 @@ class ProjectoController extends Controller
             $prog_pago->setIdPago($pago);
             $entityManager->persist($pago);
             //$entityManager->persist( $proye[0]->getProg());
-            
-
             $entityManager->flush();
 
             return $this->redirectToRoute('homepage', array('estado'=>'pago', 'proy'=>$proy));
@@ -421,13 +420,54 @@ class ProjectoController extends Controller
         return $this->render('default/addPoblacionVulnerable.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
 
-    /*
-    PREGUNTAR A PACO
     private function equipoAction($request, $proy)
     {
-        $equipo= new Equipo();
-        $form = $this->createForm(EquipoType::class, $equipo);
+        $edit = false;
+        $repository = $this->getDoctrine()->getRepository(Projecto::class);
+        $proye = $repository->findById($proy);
+   
+        if ($proye[0]->getCoordina() === null || $proye[0]->getRevisa() === null || $proye[0]->getApoya() === null) {
+            $equipo = new Equipo();
+            $form = $this->createForm(EquipoType::class, $equipo);
+        } elseif($proye[0]->getCoordina() !== null){
+            $equipo= $proye[0]->getCoordina();
+            $form = $this->createForm(EquipoType::class, $equipo);
+            $edit = true;
+        }
+        elseif($proye[0]->getRevisa() !== null){
+            $equipo= $proye[0]->getRevisa();
+            $form = $this->createForm(EquipoType::class, $equipo);
+            $edit = true;
+        }
+        else{
+            $equipo= $proye[0]->getApoya();
+            $form = $this->createForm(EquipoType::class, $equipo);
+            $edit = true;
+        }
+
         $form->handleRequest($request);
+
+    
+        if ($form->isSubmitted() && $form->isValid() &&  $form->get('anyadir')->isClicked()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($equipo);
+            $pago = new Equipo();
+
+            $repository = $this->getDoctrine()->getRepository(Projecto::class);
+            $pro = $repository->findById($proy);
+
+            $entityManager->flush();
+            if ($form->getData()->getTipo() === "Coordina" ) {
+                $pro[0]->setCoordina($equipo);
+            } elseif ($form->getData()->getTipo() === "Revisa"  ) {
+                $pro[0]->setRevisa($equipo);
+            } elseif ($form->getData()->getTipo() === "Apoya" ) {
+                $pro[0]->setApoya($equipo);
+            }
+            $entityManager->flush();
+
+            return $this->render('default/addEquipo.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
+        }
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -437,16 +477,20 @@ class ProjectoController extends Controller
             $pro = $repository->findById($proy);
 
             $entityManager->flush();
-            $pro[0]->setCoordina($equipo);
-            $pro[0]->setRevisa($equipo);
-            $pro[0]->setApoya($equipo);
+            if ($form->getData()->getTipo() === "Coordina") {
+                $pro[0]->setCoordina($equipo);
+            } elseif ($form->getData()->getTipo() === "Revisa") {
+                $pro[0]->setRevisa($equipo);
+            } else {
+                $pro[0]->setApoya($equipo);
+            }
             $entityManager->flush();
 
             return $this->redirectToRoute('homepage');
         }
-        return $this->render('default/addEquipo.html.twig', array('form'=>$form->createView()));
+        return $this->render('default/addEquipo.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
-    */
+  
 
     private function finalizarAction($proy)
     {
@@ -520,7 +564,7 @@ class ProjectoController extends Controller
     /**
      * @Route("borrarProyecto/{proy}/{tipo}", name="borrarProyecto")
      */
-    public function deleteAction($proy,$tipo)
+    public function deleteAction($proy, $tipo)
     {
         $entityManager = $this->getDoctrine()->getManager();
         $repository = $this->getDoctrine()->getRepository(Projecto::class);
@@ -530,9 +574,6 @@ class ProjectoController extends Controller
         $entityManager->remove($pro[0]);
         $entityManager->flush();
 
-        return $this->redirectToRoute('listadoProyectos',array('tipo' => $tipo));
+        return $this->redirectToRoute('listadoProyectos', array('tipo' => $tipo));
     }
-
-
-
 }

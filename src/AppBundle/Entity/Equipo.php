@@ -44,6 +44,8 @@ class Equipo
      */
     private $equipoApoya;
 
+    private $tipo;
+
     public function __construct()
     {
         $this->equipoRevisa = new ArrayCollection();
@@ -193,5 +195,25 @@ class Equipo
     public function getEquipoApoya()
     {
         return $this->equipoApoya;
+    }
+
+    /**
+     * Get the value of tipo
+     */ 
+    public function getTipo()
+    {
+        return $this->tipo;
+    }
+
+    /**
+     * Set the value of tipo
+     *
+     * @return  self
+     */ 
+    public function setTipo($tipo)
+    {
+        $this->tipo = $tipo;
+
+        return $this;
     }
 }
