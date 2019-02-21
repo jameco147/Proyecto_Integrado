@@ -415,7 +415,8 @@ class ProjectoController extends Controller
             $pro[0]->setPoblaVulnerable($pob_vul);
             $entityManager->flush();
 
-            return $this->redirectToRoute('menu');
+            //return $this->redirectToRoute('menu');
+            return $this->redirectToRoute('homepage', array('estado'=>'equipo', 'proy'=>$proy));
         }
         return $this->render('default/addPoblacionVulnerable.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
@@ -486,7 +487,8 @@ class ProjectoController extends Controller
             }
             $entityManager->flush();
 
-            return $this->redirectToRoute('homepage');
+            //return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('menu');
         }
         return $this->render('default/addEquipo.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }

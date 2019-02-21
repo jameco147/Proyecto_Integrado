@@ -14,10 +14,10 @@
             <div class="col-12">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a aria-controls="home" aria-selected="true" class="nav-link active" data-toggle="tab" href="#home" id="home-tab" role="tab">Equipo</a>
+                        <a aria-controls="profile" aria-selected="true" class="nav-link active" data-toggle="tab" href="#profile" id="profile-tab" role="tab">Identificación</a>
                     </li>
                     <li class="nav-item">
-                        <a aria-controls="profile" aria-selected="false" class="nav-link" data-toggle="tab" href="#profile" id="profile-tab" role="tab">Identificación</a>
+                        <a aria-controls="home" aria-selected="false" class="nav-link" data-toggle="tab" href="#home" id="home-tab" role="tab">Equipo</a>
                     </li>
                     <li class="nav-item">
                         <a aria-controls="contact_1" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact_1" id="contact-tab" role="tab">Seguimiento Convocatorias</a>
@@ -30,14 +30,13 @@
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
-                    <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home" role="tabpanel">
+                    <div aria-labelledby="home-tab" class="tab-pane fade" id="home" role="tabpanel">
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                     <th scope="col">Opciones</th>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">First</th>
-                                    <th scope="col">Last</th>
+                                    <th scope="col">Código interno</th>
+                                    <th scope="col">Proyecto en red</th>
                                     <th scope="col">Handle</th>
                                 </tr>
                             </thead>
@@ -45,24 +44,25 @@
                                 {% for proyecto in proyectos %}
                                     <tr>
                                         <td>
-                                            <a href="{{(path('homepage',{'estado': "null", 'proy':proyecto.id}))}}"><i class="fas fa-edit icono"></i></a>
-                                            <a href="{{(path('borrarProyecto',{'tipo': tipo, 'proy':proyecto.id}))}}"><i class="fas fa-trash-alt icono"></i></a>
+                                            {{ proyecto.nombre }}
                                         </td>
                                         <td>
-                                            {{ proyecto.nombre }}</td>
+                                            {{ proyecto.codigointer }}
+                                        </td>
                                         <td>
-                                            {{ proyecto.codigointer }}</td>
-                                        <td>
-                                            {{ proyecto.proyectoenred }}</td>
+                                            {{ proyecto.proyectoenred }}
+                                        </td>
+
                                     </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
                     </div>
-                    <div aria-labelledby="profile-tab" class="tab-pane fade" id="profile" role="tabpanel">
+                    <div aria-labelledby="profile-tab" class="tab-pane fade show active" id="profile" role="tabpanel">
                         <table class="table table-striped">
                             <thead>
                                 <tr>
+                                    <th scope="col">Opciones</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Código interno</th>
                                     <th scope="col">Código contable</th>
@@ -74,6 +74,10 @@
                             <tbody>
                                 {% for proyecto  in proyectos %}
                                     <tr>
+                                        <td>
+                                            <a href="{{(path('homepage',{'estado': "null", 'proy':proyecto.id}))}}"><i class="fas fa-edit icono"></i></a>
+                                            <a href="{{(path('borrarProyecto',{'tipo': tipo, 'proy':proyecto.id}))}}"><i class="fas fa-trash-alt icono"></i></a>
+                                        </td>
                                         <td>
                                             {{ proyecto.nombre }}</td>
                                         <td>
@@ -95,7 +99,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div aria-labelledby="profile-tab" class="tab-pane fade" id="contact_1" role="tabpanel">
+                    <div aria-labelledby="home-tab" class="tab-pane fade" id="contact_1" role="tabpanel">
                         <table class="table table-striped">
                             <thead>
                                 <tr>
