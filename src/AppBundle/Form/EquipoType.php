@@ -24,9 +24,15 @@ class EquipoType extends AbstractType
         ]);
         $builder->add('nombre');
         $builder
-        ->add('salvar',SubmitType::class,array('label'=>"Guardar"));
+        ->add('salvar',SubmitType::class,array(
+            'label'=>"Guardar",
+            'attr' => ['class' => 'botonjove']
+            ));
         $builder
-        ->add('anyadir',SubmitType::class,array('label'=>"Añadir"));
+        ->add('anyadir',SubmitType::class,array(
+            'label'=>"Añadir",
+            'attr' => ['class' => 'botonjove']
+        ));
     }/**
      * {@inheritdoc}
      */

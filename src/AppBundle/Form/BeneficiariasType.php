@@ -14,11 +14,19 @@ class BeneficiariasType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('infanciaHombre')->add('infanciaMujer')->add('juventudHombre')
-        ->add('juventudMujer')->add('adultosHombre')->add('adultosMujer')->add('mayoresHombre')
-        ->add('mayoresMujer');
+        $builder->add('infanciaHombre')
+            ->add('infanciaMujer')
+            ->add('juventudHombre')
+            ->add('juventudMujer')
+            ->add('adultosHombre')
+            ->add('adultosMujer')
+            ->add('mayoresHombre')
+            ->add('mayoresMujer');
         $builder
-        ->add('salvar',SubmitType::class,array('label'=>"Guardar"));
+        ->add('salvar',SubmitType::class,array(
+            'label'=>"Guardar",
+            'attr' => ['class' => 'botonjove']
+        ));
     }/**
      * {@inheritdoc}
      */

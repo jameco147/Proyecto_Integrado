@@ -103,7 +103,7 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">Nombre Proyecto</th>
+                                    <th scope="col">Nombre</th>
                                     <th scope="col">Estado</th>
                                     <th scope="col">Código Administración</th>
                                     <th scope="col">Tecnico/a Convocatorias Financiador</th>
@@ -184,6 +184,7 @@
                         <table class="table table-striped">
                             <thead>
                                 <tr>
+                                    <th scope="col">Nombre</th>
                                     <th scope="col">Resumen Proyecto</th>
                                     <th scope="col">Actividades Emblemáticas</th>
                                     <th scope="col">Total Beneficiarias</th>
@@ -214,6 +215,7 @@
                             <tbody>
                                 {% for proyecto  in proyectos %}
                                     <tr>
+                                        <td>{{ proyecto.nombre }}</td>
                                         <td>
                                             {{ proyecto.resumen }}</td>
                                         <td>
@@ -290,6 +292,7 @@
                      <table class="table table-striped">
                             <thead>
                                 <tr>
+                                    <th scope="col">Nombre</th>
                                     <th scope="col">Importe Condedido</th>
                                         <th scope="col">Pendiente Cobro</th>
                                 {% for proyecto  in proyectos %}
@@ -306,8 +309,9 @@
 
                         {% for proyecto  in proyectos %}
                                   <tr>
-                                 <td>{{proyecto.importeConcedido}}</td>
-                                 <td>{{ proyecto.pendienteCobro }}</td>
+                                      <td>{{ proyecto.nombre }}</td>
+                                      <td>{{proyecto.importeConcedido}}</td>
+                                      <td>{{ proyecto.pendienteCobro }}</td>
 
                                         {% if proyecto.progPago is empty  %}
                                             <td>0</td>

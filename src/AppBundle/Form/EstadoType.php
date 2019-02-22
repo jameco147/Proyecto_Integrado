@@ -25,7 +25,10 @@ class EstadoType extends AbstractType
                 'JUSTIFICANDO' => 'JUSTIFICANDO',
             ],
         ])
-            ->add('salvar',SubmitType::class,array('label'=>"Guardar"));
+            ->add('salvar',SubmitType::class, array(
+                'label'=>"Guardar",
+                'attr' => ['class' => 'botonjove']
+                ));
     }/**
      * {@inheritdoc}
      */
