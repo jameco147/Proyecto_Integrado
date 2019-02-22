@@ -12,23 +12,27 @@
 
         <div class="row">
             <div class="col-12">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item">
-                        <a aria-controls="profile" aria-selected="true" class="nav-link active" data-toggle="tab" href="#profile" id="profile-tab" role="tab">Identificación</a>
-                    </li>
-                    <li class="nav-item">
-                        <a aria-controls="home" aria-selected="false" class="nav-link" data-toggle="tab" href="#home" id="home-tab" role="tab">Equipo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a aria-controls="contact_1" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact_1" id="contact-tab" role="tab">Seguimiento Convocatorias</a>
-                    </li>
-                    <li class="nav-item">
-                        <a aria-controls="contact_2" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact_2" id="contact-tab" role="tab">Seguimiento Técnico</a>
-                    </li>
-                    <li class="nav-item">
-                        <a aria-controls="contact_3" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact_3" id="contact-tab" role="tab">Seguimiento Económico</a>
-                    </li>
-                </ul>
+                <div id="menuScroll">
+                    <div class="main-nav-outer contMenuListado">
+                        <ul class="nav main-nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a aria-controls="profile" aria-selected="true" class="nav-link active" data-toggle="tab" href="#profile" id="profile-tab" role="tab">Identificación</a>
+                            </li>
+                            <li class="nav-item">
+                                <a aria-controls="home" aria-selected="false" class="nav-link" data-toggle="tab" href="#home" id="home-tab" role="tab">Equipo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a aria-controls="contact_1" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact_1" id="contact-tab" role="tab">Seguimiento Convocatorias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a aria-controls="contact_2" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact_2" id="contact-tab" role="tab">Seguimiento Técnico</a>
+                            </li>
+                            <li class="nav-item">
+                                <a aria-controls="contact_3" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact_3" id="contact-tab" role="tab">Seguimiento Económico</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="tab-content" id="myTabContent">
                     <div aria-labelledby="home-tab" class="tab-pane fade" id="home" role="tabpanel">
                         <table class="table table-striped">
@@ -40,6 +44,7 @@
                                     <th scope="col">Handle</th>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 {% for proyecto in proyectos %}
                                     <tr>
@@ -181,7 +186,7 @@
                         </table>
                     </div>
                     <div aria-labelledby="profile-tab" class="tab-pane fade" id="contact_2" role="tabpanel">
-                        <table class="table table-striped">
+                        <table class="table table-striped" id="listaProyectos">
                             <thead>
                                 <tr>
                                     <th scope="col">Resumen Proyecto</th>
@@ -287,7 +292,7 @@
                         </table>
                     </div>
                     <div aria-labelledby="contact-tab" class="tab-pane fade" id="contact_3" role="tabpanel">
-                     <table class="table table-striped">
+                     <table class="table table-striped" id="listaProyectos">
                             <thead>
                                 <tr>
                                     <th scope="col">Importe Condedido</th>
