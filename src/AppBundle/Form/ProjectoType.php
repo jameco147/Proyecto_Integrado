@@ -28,76 +28,76 @@ class ProjectoType extends AbstractType
             ],
         ])
             ->add('codigoInter')->add('codigoAdministracion')->add('tecnicoConvocatoria')
-        ->add('codigoContable')->add('publicoPrivada', ChoiceType::class, [
+            ->add('codigoContable')->add('publicoPrivada', ChoiceType::class, [
                 'choices' => [
                     'PÚBLICO' => 'PÚBLICO',
                     'PRIVADA' => 'PRIVADA',
                 ],
             ])
-        ->add('nombre')->add('proyectoEnRed',ChoiceType::class, [
+            ->add('nombre')->add('proyectoEnRed', ChoiceType::class, [
                 'choices' => [
                     'SI' => true,
                     'NO' => false,
                 ],
             ])
             ->add('entidadLider')->add('entidadesSociales')
-        ->add('financiador')->add('contactoAdminist')->add('linkConvacatoria')
-        ->add('importeSolicitado')->add('importeConcedido')
+            ->add('financiador')->add('contactoAdminist')->add('linkConvacatoria')
+            ->add('importeSolicitado')->add('importeConcedido')
+            ->add('fechaEstimadaResolucion', DateType::class, [
+                'widget' => 'single_text', 'required' => false
+            ])
+            ->add('fechaResolucion', DateType::class, [
+                'widget' => 'single_text', 'required' => false
+            ])
+            ->add('fechaIniEjecucion', DateType::class, [
+                'widget' => 'single_text', 'required' => false
+            ])
+            ->add('fechaFinEjecucion', DateType::class, [
+                'widget' => 'single_text', 'required' => false
+            ])
+            ->add('duracionMeses', DateType::class, [
+                'widget' => 'single_text', 'required' => false
+            ])
+            ->add('fechaJustificacion1', DateType::class, [
+                'widget' => 'single_text', 'required' => false
+            ])
+            ->add('fechaJustificacion2', DateType::class, [
+                'widget' => 'single_text', 'required' => false
+            ])
+            ->add('fechaRequi1', DateType::class, [
+                'widget' => 'single_text', 'required' => false
+            ])
+            ->add('fechaRequi2', DateType::class, [
+                'widget' => 'single_text', 'required' => false
+            ])
+            ->add('fechaLimiteEntrega', DateType::class, [
+                'widget' => 'single_text', 'required' => false
+            ])
+            ->add('duracionMeses')
+            ->add('periodoEjecucion')
+            ->add('observaciones')
+            ->add('pendienteCobro')
+            ->add('resumen', TextareaType::class, [
+                'attr' => ['class' => 'tinymce'],
+            ])->add('actEmblematicas', TextareaType::class, [
+                'attr' => ['class' => 'tinymce'],
+            ]);
 
-        ->add('fechaEstimadaResolucion', DateType::class, [
-            'widget' => 'single_text'
-        ])
-        
-        ->add('fechaResolucion', DateType::class, [
-            'widget' => 'single_text'
-        ])
-            
-        ->add('fechaIniEjecucion', DateType::class, [
-            'widget' => 'single_text'
-        ])
-        ->add('fechaFinEjecucion', DateType::class, [
-            'widget' => 'single_text'
-        ])
-
-        ->add('duracionMeses', DateType::class, [
-            'widget' => 'single_text'
-        ])
-        ->add('fechaJustificacion1', DateType::class, [
-            'widget' => 'single_text'
-        ])
-        ->add('fechaJustificacion2', DateType::class, [
-            'widget' => 'single_text'
-        ])
-        ->add('fechaRequi1', DateType::class, [
-            'widget' => 'single_text'
-        ])
-        ->add('fechaRequi2', DateType::class, [
-            'widget' => 'single_text'
-        ])
-        ->add('fechaLimiteEntrega', DateType::class, [
-            'widget' => 'single_text'
-        ])
-
-       
-
-        ->add('duracionMeses')
-        ->add('periodoEjecucion')
-        ->add('observaciones')->add('pendienteCobro')->add('resumen', TextareaType::class, [
-            'attr' => ['class' => 'tinymce'],
-        ])->add('actEmblematicas', TextareaType::class, [
-            'attr' => ['class' => 'tinymce'],
-        ]);
-        
         /*->add('tipoAdministracion')*/
-       /* ->add('tipoFinanciacion')->add('estado')->add('planEstrategico')->add('coordina')*/
-       /*->add('revisa')->add('apoya')/->add('poblaVulnerable')->add('impactoSocial');*/
-        
-       // $builder->add('beneficiaria');
+        /* ->add('tipoFinanciacion')->add('estado')->add('planEstrategico')->add('coordina')*/
+        /*->add('revisa')->add('apoya')/->add('poblaVulnerable')->add('impactoSocial');*/
 
-        $builder->add('salvar',SubmitType::class,array('label'=>"Guardar Proyecto"));
+        // $builder->add('beneficiaria');
+
+        $builder->add('salvar', SubmitType::class, array(
+            'label' => "Guardar Proyecto",
+            'attr' => ['class' => 'botonjove']
+        ));
 
 
-    }/**
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)

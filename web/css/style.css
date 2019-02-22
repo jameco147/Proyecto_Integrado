@@ -2,6 +2,9 @@ body{
     font-family: 'Raleway', sans-serif;
 }
 
+.sinsub {
+    text-decoration: none !important;
+}
 
 .logoCabecera {
     width: 175px;
@@ -10,6 +13,7 @@ body{
 
 .botonjove {
     background: #d21e45;
+    color: white;
 
 }
 

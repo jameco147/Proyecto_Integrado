@@ -14,7 +14,11 @@ class PlanEstrategicoType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre')->add('salvar',SubmitType::class,array('label'=>"Guardar"));
+        $builder->add('nombre')
+            ->add('salvar',SubmitType::class,array(
+                'label'=>"Guardar",
+                'attr' => ['class' => 'botonjove']
+            ));
 
     }/**
      * {@inheritdoc}

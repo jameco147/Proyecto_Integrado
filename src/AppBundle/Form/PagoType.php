@@ -18,15 +18,21 @@ class PagoType extends AbstractType
     {
         $builder
             ->add('fechaEstimada', DateType::class, [
-                'widget' => 'single_text'
+                'widget' => 'single_text', 'required' => false
             ])
             ->add('fechaPago', DateType::class, [
-                'widget' => 'single_text'
+                'widget' => 'single_text', 'required' => false
             ])->add('cantidad');
         $builder
-        ->add('salvar',SubmitType::class,array('label'=>"Guardar"));
+        ->add('salvar',SubmitType::class, array(
+            'label'=>"Guardar",
+            'attr' => ['class' => 'botonjove']
+        ));
         $builder
-        ->add('anyadir',SubmitType::class,array('label'=>"Añadir"));
+        ->add('anyadir',SubmitType::class, array(
+            'label'=>"Añadir",
+            'attr' => ['class' => 'botonjove']
+        ));
     }/**
      * {@inheritdoc}
      */

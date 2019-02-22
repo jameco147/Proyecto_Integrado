@@ -19,7 +19,10 @@ class ImpactoSocialType extends AbstractType
             ->add('socioeducativo')->add('sociosanitario')->add('viviendaSocial')
             ->add('otros');
         $builder
-            ->add('salvar',SubmitType::class,array('label'=>"Nuevo Impacto Social"));
+            ->add('salvar',SubmitType::class, array(
+                'label'=>"Guardar",
+                'attr' => ['class' => 'botonjove']
+            ));
     }/**
      * {@inheritdoc}
      */

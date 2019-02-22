@@ -24,7 +24,10 @@ class TipoFinanciacionType extends AbstractType
             ],
         ]);
         $builder
-        ->add('salvar',SubmitType::class,array('label'=>"Guardar"));
+        ->add('salvar',SubmitType::class, array(
+            'label'=>"Guardar",
+            'attr' => ['class' => 'botonjove']
+        ));
     }/**
      * {@inheritdoc}
      */
