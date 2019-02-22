@@ -39,9 +39,13 @@ class Equipo
      */
     private $equipoCoordina;
 
-    /**
-     * @ORM\OneToMany(targetEntity="Projecto", mappedBy="apoya")
+
+
+     /**
+     * @ORM\ManyToOne(targetEntity="Projecto", inversedBy="apoya", fetch="EAGER")
+     * @ORM\JoinColumn(name="apoya_id", referencedColumnName="id")
      */
+
     private $equipoApoya;
 
     private $tipo;
@@ -213,6 +217,20 @@ class Equipo
     public function setTipo($tipo)
     {
         $this->tipo = $tipo;
+
+        return $this;
+    }
+
+    /**
+     * Set equipoApoya.
+     *
+     * @param \AppBundle\Entity\Projecto|null $equipoApoya
+     *
+     * @return Equipo
+     */
+    public function setEquipoApoya(\AppBundle\Entity\Projecto $equipoApoya = null)
+    {
+        $this->equipoApoya = $equipoApoya;
 
         return $this;
     }

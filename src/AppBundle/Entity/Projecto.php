@@ -93,11 +93,12 @@ class Projecto
      */
     private $revisa;
 
-    /**
-      * @ORM\ManyToOne(targetEntity="Equipo", inversedBy="equipoApoya", fetch="EAGER")
-      * @ORM\JoinColumn(name="apoya_id", referencedColumnName="id")
-      */
+  
+     /**
+     * @ORM\OneToMany(targetEntity="Equipo", mappedBy="equipoApoya", fetch="EAGER")
+     */
     private $apoya;
+
 
     /**
      * @var bool
@@ -304,6 +305,7 @@ class Projecto
     public function __construct()
     {
         $this->prog_pago = new ArrayCollection();
+        $this->apoya = new ArrayCollection();
     }
 
 
@@ -1320,5 +1322,31 @@ class Projecto
         $this->pendienteCobro = $pendienteCobro;
 
         return $this;
+    }
+
+    /**
+     * Add apoya.
+     *
+     * @param \AppBundle\Entity\Equipo $apoya
+     *
+     * @return Projecto
+     */
+    public function addApoya(\AppBundle\Entity\Equipo $apoya)
+    {
+        $this->apoya[] = $apoya;
+
+        return $this;
+    }
+
+    /**
+     * Remove apoya.
+     *
+     * @param \AppBundle\Entity\Equipo $apoya
+     *
+     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
+     */
+    public function removeApoya(\AppBundle\Entity\Equipo $apoya)
+    {
+        return $this->apoya->removeElement($apoya);
     }
 }

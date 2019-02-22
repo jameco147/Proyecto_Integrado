@@ -95,9 +95,9 @@ class ProjectoController extends Controller
             $entityManager->flush();
 
             if ($edit === false) {
-                return $this->redirectToRoute('homepage', array('estado'=>'beneficiarias', 'proy'=>$proye->getId()));
+                return $this->redirectToRoute('homepage', array('estado'=>'equipo', 'proy'=>$proye->getId()));
             } else {
-                return $this->redirectToRoute('homepage', array('estado'=>'beneficiarias', 'proy'=>$proye[0]->getId()));
+                return $this->redirectToRoute('homepage', array('estado'=>'equipo', 'proy'=>$proye[0]->getId()));
             }
         }
         return $this->render('default/addProj.html.twig', array('form'=>$form->createView()));
@@ -451,13 +451,16 @@ class ProjectoController extends Controller
     
         if ($form->isSubmitted() && $form->isValid() &&  $form->get('anyadir')->isClicked()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $equipo = new Equipo();
             $entityManager->persist($equipo);
-            $pago = new Equipo();
 
             $repository = $this->getDoctrine()->getRepository(Projecto::class);
             $pro = $repository->findById($proy);
 
+            $pro[0]->addApoya($equipo);
+
             $entityManager->flush();
+
             if ($form->getData()->getTipo() === "Coordina" ) {
                 $pro[0]->setCoordina($equipo);
             } elseif ($form->getData()->getTipo() === "Revisa"  ) {
@@ -477,7 +480,9 @@ class ProjectoController extends Controller
             $repository = $this->getDoctrine()->getRepository(Projecto::class);
             $pro = $repository->findById($proy);
 
+            $pro[0]->addApoya($equipo);
             $entityManager->flush();
+
             if ($form->getData()->getTipo() === "Coordina") {
                 $pro[0]->setCoordina($equipo);
             } elseif ($form->getData()->getTipo() === "Revisa") {

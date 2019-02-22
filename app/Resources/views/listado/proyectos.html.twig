@@ -35,23 +35,47 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">Código interno</th>
-                                    <th scope="col">Proyecto en red</th>
-                                    <th scope="col">Handle</th>
+                                    <th scope="col">Coordina</th>
+                                    <th scope="col">Revisa</th>
+                                    <th scope="col">Apoya</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for proyecto in proyectos %}
+                                {{dump(proyecto.coordina)}}
                                     <tr>
                                         <td>
                                             {{ proyecto.nombre }}
                                         </td>
+                                    {% if proyecto.coordina != null %}
+                                        {% for _proyecto  in proyecto.coordina %}
                                         <td>
-                                            {{ proyecto.codigointer }}
+                                            {{ _proyecto.nombre }}
                                         </td>
+                                        {% endfor %}
+                                    {% else %}
+                                        <td></td>
+                                    {% endif %}
+
+                                    {% if proyecto.revisa != null %}
+                                        {% for _proyecto  in proyecto.revisa %}
                                         <td>
-                                            {{ proyecto.proyectoenred }}
+                                            {{ _proyecto.nombre }}
                                         </td>
+                                        {% endfor %}
+                                    {% else %}
+                                        <td></td>
+                                    {% endif %}
+
+                                     {% if proyecto.apoya != null %}
+                                        {% for _proyecto  in proyecto.apoya %}
+                                        <td>
+                                            {{ _proyecto.nombre }}
+                                        </td>
+                                        {% endfor %}
+                                    {% else %}
+                                        <td></td>
+                                    {% endif %}
 
                                     </tr>
                                 {% endfor %}
@@ -87,12 +111,16 @@
                                         {% if proyecto.tipoAdministracion != null %}
                                             <td>
                                                 {{ proyecto.tipoAdministracion.nombre}}</td>
+                                           {% else %}
+                                            <td></td>
                                         {% endif %}
                                         <td>
                                             {{ proyecto.publicoPrivada }}</td>
                                         {% if proyecto.tipoFinanciacion != null %}
                                             <td>
                                                 {{ proyecto.tipoFinanciacion.nombre}}</td>
+                                        {% else %}
+                                            <td></td>
                                         {% endif %}
                                     </tr>
                                 {% endfor %}
@@ -134,12 +162,16 @@
                                         {% if proyecto.estado != null %}
                                             <td>
                                                 {{ proyecto.estado.nombre }}</td>
+                                             {% else %}
+                                            <td></td>
                                         {% endif %}
                                         <td>
                                             {{ proyecto.codigocontable }}</td>
                                         {% if proyecto.tipoAdministracion != null %}
                                             <td>
                                                 {{ proyecto.tipoAdministracion.nombre}}</td>
+                                             {% else %}
+                                            <td></td>
                                         {% endif %}
                                         <td>
                                             {{ proyecto.tecnicoConvocatoria }}</td>
@@ -242,6 +274,16 @@
                                                 {{ proyecto.beneficiaria.mayoresHombre }}</td>
                                             <td>
                                                 {{ proyecto.beneficiaria.mayoresMujer }}</td>
+                                         {% else %}
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
                                         {% endif %}
                                         {% if proyecto.poblaVulnerable != null %}
                                             <td>
@@ -258,6 +300,14 @@
                                                 {{ proyecto.poblaVulnerable.migrantes}}</td>
                                             <td>
                                                 {{ proyecto.poblaVulnerable.otros}}</td>
+                                            {% else %}
+                                            <td></td>
+                                            <td></td>
+                                             <td></td>
+                                              <td></td>
+                                               <td></td>
+                                                <td></td>
+                                                 <td></td>
                                         {% endif %}
                                         {% if proyecto.impactoSocial != null %}
                                             <td>
@@ -280,6 +330,17 @@
                                                 {{ proyecto.impactoSocial.viviendaSocial}}</td>
                                             <td>
                                                 {{ proyecto.impactoSocial.otros}}</td>
+                                         {% else %}
+                                            <td></td>
+                                            <td></td>
+                                             <td></td>
+                                             <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
                                         {% endif %}
                                     </tr>
                                 {% endfor %}
@@ -313,7 +374,6 @@
                                             <td>0</td>
                                             <td>0</td>
                                             <td>0</td>
-
                                         {% endif %}
                             {% for _proyecto  in proyecto.progPago %}
 
