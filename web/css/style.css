@@ -78,3 +78,25 @@ body{
     font-size: 25px;
     color: #d21e45;
 }
+/* --- LISTADOS --- */
+#listaProyectos{
+    text-align: center;
+}
+
+#linkListado{
+    color: #d21e45 !important;
+}
+
+.nav-item a{
+    color: black !important;
+}
+.nav-item a:hover{
+    color: #d21e45 !important;
+}
+.menuListado{
+    padding-left: 20%;
+}
+
+.contMenuListado{
+    background-color: white;
+}
