@@ -9,9 +9,15 @@
 
 {% block body %}
     <div class="container">
-        <h1>Equipo</h1>
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mb-3 tituloFormulario">Equipo</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
         <div class="row d-flex justify-content-center">
-            <div class="col-6">
+            <div class="col-6 formulario">
                 {{form_start(form)}}
                 {{form_widget(form)}}
                 {{form_end(form)}}

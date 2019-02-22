@@ -15,8 +15,8 @@ class PoblacionVulnerableType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('exclusionSocial')->add('mayores')->add('mujeres')->add('ninyos',CheckboxType::class,array('label'=>'Niños'))
-        ->add('jovenes',CheckboxType::class,array('label'=>'Jóvenes'))->add('migrantes')->add('otros')
+        $builder->add('exclusionSocial')->add('mayores')->add('mujeres')->add('ninyos',CheckboxType::class,array('label'=>'Niños', 'required'=>false))
+        ->add('jovenes',CheckboxType::class,array('label'=>'Jóvenes', 'required'=>false))->add('migrantes')->add('otros')
         ->add('salvar',SubmitType::class,array('label'=>"Guardar"));
     }/**
      * {@inheritdoc}
