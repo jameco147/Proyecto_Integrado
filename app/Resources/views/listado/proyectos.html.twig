@@ -8,26 +8,28 @@
 
                 <!--Este campo será una variable-->
                 <div id="menuScroll">
-                <div class="main-nav-outer">
-                    <ul class="nav main-nav nav-tabs" id="myTab menuListado" role="tablist">
-                        <li class="nav-item">
-                            <a aria-controls="home" aria-selected="true" class="nav-link active" data-toggle="tab" href="#home" id="home-tab" role="tab">Equipo</a>
-                        </li>
-                        <li class="nav-item">
-                            <a aria-controls="profile" aria-selected="false" class="nav-link" data-toggle="tab" href="#profile" id="profile-tab" role="tab">Identificación</a>
-                        </li>
-                        <li class="nav-item">
-                            <a aria-controls="contact_1" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact_1" id="contact-tab" role="tab">Seguimiento Convocatorias</a>
-                        </li>
-                        <li class="nav-item">
-                            <a aria-controls="contact_2" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact_2" id="contact-tab" role="tab">Seguimiento Técnico</a>
-                        </li>
-                        <li class="nav-item">
-                            <a aria-controls="contact_3" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact_3" id="contact-tab" role="tab">Seguimiento Económico</a>
-                        </li>
-                    </ul>
-                    <a class="res-nav_click" href="#"><i class="fa fa-bars"></i></a>
+                    <div class="main-nav-outer contMenuListado">
+                        <ul class="nav main-nav nav-tabs" id="myTab menuListado" role="tablist">
+                            <li class="nav-item">
+                                <a aria-controls="home" aria-selected="true" class="nav-link active" data-toggle="tab" href="#home" id="home-tab" role="tab">Equipo</a>
+                            </li>
+                            <li class="nav-item">
+                                <a aria-controls="profile" aria-selected="false" class="nav-link" data-toggle="tab" href="#profile" id="profile-tab" role="tab">Identificación</a>
+                            </li>
+                            <li class="nav-item">
+                                <a aria-controls="contact_1" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact_1" id="contact-tab" role="tab">Seguimiento Convocatorias</a>
+                            </li>
+                            <li class="nav-item">
+                                <a aria-controls="contact_2" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact_2" id="contact-tab" role="tab">Seguimiento Técnico</a>
+                            </li>
+                            <li class="nav-item">
+                                <a aria-controls="contact_3" aria-selected="false" class="nav-link" data-toggle="tab" href="#contact_3" id="contact-tab" role="tab">Seguimiento Económico</a>
+                            </li>
+                        </ul>
+                        <a class="res-nav_click" href="#"><i class="fa fa-bars"></i></a>
+                    </div>
                 </div>
+
                 <div class="tab-content" id="myTabContent">
                     <div aria-labelledby="home-tab" class="tab-pane fade show active" id="home" role="tabpanel">
                         <table class="table table-striped" id="listaProyectos">
@@ -40,7 +42,7 @@
                                     <th scope="col">Handle</th>
                                 </tr>
                             </thead>
-                </div>
+
                             <tbody>
                                 {% for proyecto in proyectos %}
                                     <tr>

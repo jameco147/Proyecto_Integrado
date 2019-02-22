@@ -47,10 +47,18 @@
 <script src="{{ asset('js/popper.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('js/jquery-scrolltofixed.js') }}"></script>
+<script src="{{ asset('js/wow.js') }}"></script>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        new WOW().init();
+        $('#menuScroll').scrollToFixed();
+      });
+    </script>
 
     <script type="text/javascript">
       $(document).ready(function(e) {
-        $('.superMenu').scrollToFixed();
+        $('.menuScroll').scrollToFixed();
         $('.res-nav_click').click(function() {
           $('.main-nav').slideToggle();
           return false
