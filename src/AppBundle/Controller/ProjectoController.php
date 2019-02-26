@@ -95,9 +95,9 @@ class ProjectoController extends Controller
             $entityManager->flush();
 
             if ($edit === false) {
-                return $this->redirectToRoute('homepage', array('estado'=>'equipo', 'proy'=>$proye->getId()));
+                return $this->redirectToRoute('homepage', array('estado'=>'beneficiarias', 'proy'=>$proye->getId()));
             } else {
-                return $this->redirectToRoute('homepage', array('estado'=>'equipo', 'proy'=>$proye[0]->getId()));
+                return $this->redirectToRoute('homepage', array('estado'=>'beneficiarias', 'proy'=>$proye[0]->getId()));
             }
         }
         return $this->render('default/addProj.html.twig', array('form'=>$form->createView()));
@@ -415,8 +415,8 @@ class ProjectoController extends Controller
             $pro[0]->setPoblaVulnerable($pob_vul);
             $entityManager->flush();
 
-            //return $this->redirectToRoute('menu');
-            return $this->redirectToRoute('homepage', array('estado'=>'equipo', 'proy'=>$proy));
+            return $this->redirectToRoute('menu');
+            //return $this->redirectToRoute('homepage', array('estado'=>'equipo', 'proy'=>$proy));
         }
         return $this->render('default/addPoblacionVulnerable.html.twig', array('form'=>$form->createView(),'proy'=>$proy));
     }
