@@ -505,7 +505,7 @@ class ProjectoController extends Controller
         $repository = $this->getDoctrine()->getRepository(Projecto::class);
         $pro = $repository->findById($proy);
 
-        dump($pro);
+        //dump($pro);
         
         if ($pro[0]->getBeneficiaria() === null) {
             $bene = new Beneficiarias();
